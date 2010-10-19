@@ -1,0 +1,56 @@
+==schuzka 13.10==
+
+NK
+_přítomni: Jan Hutař, Ladislav Cubr, Pavel Kocourek, Vladimir Lahoda, Andrea Fojtů_
+
+*níže připojuji zápis, jak jsme debatu pochopili v NK, rád bych, aby jsme na věc měli stejný pohled ;-) Pokud něco chybí, prosím doplnit/upravit.*
+
+
+1. SLOUČENÍ POLÍ
+-sloučení polí autor – korporace – akce – stačí jedno pole, protože se nemohou vyskytovat zároveň – jedno pole automaticky vylučuje druhé
+-souhrnný název – „Autor (osoba, korporace)“
+
+2. SCHÉMATA
+-zaslat nová schémata z poslední schůzky, kde jsou úpravy oproti schématům ze zadání
+-naše kontrola vůči zadání, porovnání změn, případné doplnění
+
+3. vyhledávání – jednoduché a la google (jedno okno)
+-nápis před oknem „trvalý identifikátor“
+-pod oknem tato možnost volby přes políčko se zatržítkem nebo kulaté zatržítko (kolecko):
+
+ URN:NBN 
+ čČNB
+ ISBN
+ ISSN
+-nápověda se bude měnit podle toho, které políčko uživatel označí
+
+
+4. vyhledávání - rozšířené
+-čekáme na návrh
+
+5. způsob vyhledávání
+-podle ISSN /CNBN mohou vylézt např. stovky čísel
+-možnost výsledek seskupovat podle let / ročníků apod., abychom zachovali možnost hledání podle ISSN 
+
+6. výsledek vyhledávání
+-spojení obrazovek – výsledek i vyhledávač budou v jednom okně
+
+7. syntax
+-pouze šest polí, bez granularity za nimi
+-primárně numerické znaky, později alfanumerické (celkem 2 miliardy kombinací)
+
+8. propojení na další systémy
+chystá se několik systémů, měli bychom alespoň být připraveni k integraci
+
+ERDS (Europeana Resolution Discovery Service):
+http://www.europeanaconnect.eu/documents/D5.4.1_eConnect_%20Europeana%20Resolution%20Service_v1.0_DNB.pdf
+
+http://sourceforge.net/projects/metaresolver/
+
+PERSID
+http://www.persid.org/
+-do konce roku chystají mezinárodní URN:NBN resolver spojující národní URN:NBN resolvery
+
+*9. základní entity
+-nové workflow (úprava RD-CZ?) - možnost rozsekávat vše na čísla, aby se URN:NBN dalo přidělovat jen číslům seriálů?
+-můžeme akceptovat přidělování titulu, ročníku, číslu, ale nic mezi (půlka ročníku), ani nic níže (stránka) *
