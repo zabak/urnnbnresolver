@@ -1,2 +1,4 @@
 Datová struktura Resolveru URN NBN bude prizpusobena verzi 2 Registru digitalizace
-[http://code.google.com/p/urnnbnresolver/wiki/DomainModel.jpg]
+
+
+http://urnnbnresolver.googlecode.com/svn/wiki/DomainModel.jpg
