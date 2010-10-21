@@ -7,30 +7,25 @@ _přítomni: Jan Hutař, Ladislav Cubr, Pavel Kocourek, Vladimir Lahoda, Andrea 
 
 
 1. SLOUČENÍ POLÍ
--sloučení polí autor – korporace – akce – stačí jedno pole, protože se nemohou vyskytovat zároveň – jedno pole automaticky vylučuje druhé
--souhrnný název – „Autor (osoba, korporace)“
+- z duvodu zpetneho porovnávání záznamů nebudeme slučovat. Ve vyhledávání (výsledku) bude zobrazeno jedno nebo druhé podle dat.
 
 2. SCHÉMATA
 -zaslat nová schémata z poslední schůzky, kde jsou úpravy oproti schématům ze zadání
 -naše kontrola vůči zadání, porovnání změn, případné doplnění
 
-3. vyhledávání – jednoduché a la google (jedno okno)
+3. vyhledávání – jednoduché (jedno dotazovací pole)
 -nápis před oknem „trvalý identifikátor“
--pod oknem tato možnost volby přes políčko se zatržítkem nebo kulaté zatržítko (kolecko):
-
- URN:NBN 
- čČNB
- ISBN
- ISSN
--nápověda se bude měnit podle toho, které políčko uživatel označí
-
+- výběr nebude pravděpodobně potřeba vzhledem k syntaxi identifikátorů. Zkusíme bez něj.
+(URN:NBN,čČNB,ISBN,ISSN)
+-nápověda navrhujeme zobrazit, dokud není zadán dotaz, a když se nic nenajde.
 
 4. vyhledávání - rozšířené
--čekáme na návrh
+- navrhujeme začlenit zobrazení bloku informací o identifikátorech přímo do záznamu v Registru.
 
 5. způsob vyhledávání
 -podle ISSN /CNBN mohou vylézt např. stovky čísel
 -možnost výsledek seskupovat podle let / ročníků apod., abychom zachovali možnost hledání podle ISSN 
+Pouzijeme v návrhu komponentu Strom.
 
 6. výsledek vyhledávání
 -spojení obrazovek – výsledek i vyhledávač budou v jednom okně
@@ -54,3 +49,4 @@ http://www.persid.org/
 *9. základní entity
 -nové workflow (úprava RD-CZ?) - možnost rozsekávat vše na čísla, aby se URN:NBN dalo přidělovat jen číslům seriálů?
 -můžeme akceptovat přidělování titulu, ročníku, číslu, ale nic mezi (půlka ročníku), ani nic níže (stránka) *
+To je na "přidělujících" :)
