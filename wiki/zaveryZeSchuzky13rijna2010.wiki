@@ -13,11 +13,15 @@ _přítomni: Jan Hutař, Ladislav Cubr, Pavel Kocourek, Vladimir Lahoda, Andrea 
 -zaslat nová schémata z poslední schůzky, kde jsou úpravy oproti schématům ze zadání
 -naše kontrola vůči zadání, porovnání změn, případné doplnění
 
+http://urnnbnresolver.googlecode.com/svn/wiki/DomainModel.jpg
+
 3. vyhledávání – jednoduché (jedno dotazovací pole)
 -nápis před oknem „trvalý identifikátor“
 - výběr nebude pravděpodobně potřeba vzhledem k syntaxi identifikátorů. Zkusíme bez něj.
 (URN:NBN,čČNB,ISBN,ISSN)
 -nápověda navrhujeme zobrazit, dokud není zadán dotaz, a když se nic nenajde.
+
+http://urnnbnresolver.googlecode.com/svn/wiki/GUI.jpg
 
 4. vyhledávání - rozšířené
 - navrhujeme začlenit zobrazení bloku informací o identifikátorech přímo do záznamu v Registru.
