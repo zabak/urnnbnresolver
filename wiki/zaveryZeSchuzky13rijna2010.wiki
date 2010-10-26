@@ -1,6 +1,6 @@
-==schuzka 13.10==
+==schuzka 13.10 a 26.10==
 
-NK
+.NK
 _přítomni: Jan Hutař, Ladislav Cubr, Pavel Kocourek, Vladimir Lahoda, Andrea Fojtů_
 
 *níže připojuji zápis, jak jsme debatu pochopili v NK, rád bych, aby jsme na věc měli stejný pohled ;-) Pokud něco chybí, prosím doplnit/upravit.*
@@ -12,6 +12,17 @@ _přítomni: Jan Hutař, Ladislav Cubr, Pavel Kocourek, Vladimir Lahoda, Andrea 
 2. SCHÉMATA
 -zaslat nová schémata z poslední schůzky, kde jsou úpravy oproti schématům ze zadání
 -naše kontrola vůči zadání, porovnání změn, případné doplnění
+
+
+úpravy z 26.10
+
+v tabulce int. entita - přidat pole: 
+
+* pro typ entity ročník > číslo ročníku; rok vydání
+
+* pro typ entity číslo> číslo ročníku, číslo "čísla"
+
+úprava u tabulky instituce - pole link změna počtu znaků z 50 na 200- je to url do báze ADR NK
 
 http://urnnbnresolver.googlecode.com/svn/wiki/DomainModel.jpg
 
