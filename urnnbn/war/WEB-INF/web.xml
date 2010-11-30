@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>aplikatorInitializer</servlet-name>
+    <servlet-class>cz.incad.urnnbn.server.UrnnbnLoaderServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+    
+  <servlet>
+    <servlet-name>aplikatorServlet</servlet-name>
+    <servlet-class>org.aplikator.server.rpc.AplikatorServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>fileUploadServlet</servlet-name>
+    <servlet-class>org.aplikator.server.FileUploadServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>fileDownloadServlet</servlet-name>
+    <servlet-class>org.aplikator.server.FileDownloadServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>searchServlet</servlet-name>
+    <servlet-class>cz.incad.urnnbn.search.server.rpc.SearchServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>aplikatorInitializer</servlet-name>
+    <url-pattern>/urnnbn/ddl</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>aplikatorServlet</servlet-name>
+    <url-pattern>/urnnbn/aplikatorService</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>fileUploadServlet</servlet-name>
+    <url-pattern>/urnnbn/upload</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>fileDownloadServlet</servlet-name>
+    <url-pattern>/urnnbn/download</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>searchServlet</servlet-name>
+    <url-pattern>/search/searchService</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Main.html</welcome-file>
+  </welcome-file-list>
+
+  <resource-ref>
+    <description>DataSource Reference For The Database</description>
+    <res-ref-name>jdbc/aplikatorDS</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  
+  <env-entry>
+	<env-entry-name>aplikator.structure</env-entry-name>
+	<env-entry-value>cz.incad.urnnbn.server.Structure</env-entry-value>
+	<env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <resource-ref>
+    <description>DataSource Reference For The Database</description>
+    <res-ref-name>jdbc/RDCZDS</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  
+
+</web-app>
