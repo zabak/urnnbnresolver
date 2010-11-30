@@ -1,0 +1,9 @@
+<module  rename-to='search'>
+	<inherits name="com.google.gwt.user.User"/>
+	<inherits name="com.google.gwt.user.theme.standard.Standard"/>
+    <inherits name='org.aplikator.Aplikator'/>
+	<entry-point class="cz.incad.urnnbn.search.client.Main"/>
+    <source path='client'/>
+    <source path='shared'/>
+    
+</module>
