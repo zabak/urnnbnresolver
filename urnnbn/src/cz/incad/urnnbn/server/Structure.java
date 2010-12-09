@@ -131,7 +131,6 @@ public class Structure extends Application {
             addIndex("SIGLA_IDX", true, SIGLA);
             addIndex("NAZEV_INSTITUCE_IDX", false, NAZEV);
         }
-
     }
     
     public class DigitalniKnihovna extends Entity {
@@ -148,9 +147,7 @@ public class Structure extends Application {
             ADRESA= addProperty("ADRESA", PropertyType.STRING, 400, false);
             addIndex("NAZEV_KNIHOVNY_IDX", false, NAZEV);
             addIndex("KOD_KNIHOVNY_IDX", true, KODRDCZ);
-           
         }
-
     }
 
     public final DigitalniKnihovna digitalniKnihovna = new DigitalniKnihovna();
@@ -158,18 +155,11 @@ public class Structure extends Application {
     public final Zverejneno zverejneno = new Zverejneno();
     public final DigitalniReprezentace digitalniReprezentace = new DigitalniReprezentace();
     public final IntelektualniEntita intelektualniEntita = new IntelektualniEntita();
-   
-    
-    
-    
 
     public Structure() {
-        // Reverse collection must be declared only after authors initialization
         zverejneno.DIGITALNI_REPREZENTACE = zverejneno.addReference(digitalniReprezentace, "DIGITALNI_REPREZENTACE");
         digitalniReprezentace.ZVEREJNENO = digitalniReprezentace.addReverseCollection("DIGITALNI_REPREZENTACE", zverejneno, zverejneno.DIGITALNI_REPREZENTACE);
         digitalniReprezentace.INTELEKTUALNI_ENTITA = digitalniReprezentace.addReference(intelektualniEntita, "INTELEKTUALNI_ENTITA");
         intelektualniEntita.DIGITALNI_REPREZENTACE = intelektualniEntita.addReverseCollection("INTELEKTUALNI_ENTITA", digitalniReprezentace, digitalniReprezentace.INTELEKTUALNI_ENTITA);
-        
     }
-
 }

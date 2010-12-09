@@ -5,5 +5,8 @@
 	<entry-point class="cz.incad.urnnbn.search.client.Main"/>
     <source path='client'/>
     <source path='shared'/>
+    <public path='client'>
+        <include name='logo_books.png'/>
+    </public>
     
 </module>

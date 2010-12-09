@@ -82,7 +82,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
         if (value == null){
             return "";
         }else{
-            return label+": <b>"+value+"</b><br>";
+            return label+": <span style=\"color: black;\">"+value+"</span><br>";
         }
     }
     

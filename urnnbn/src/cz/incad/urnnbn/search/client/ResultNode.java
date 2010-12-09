@@ -22,7 +22,8 @@ public class ResultNode implements Serializable {
 
     
     public ResultNode(String contents){
-        this.contents = "<span style='font-size:16px;'>"+contents+"</span>";
+        //this.contents = "<span>"+contents+"</span>";
+        this.contents = contents;
     }
     
     public String getContents() {

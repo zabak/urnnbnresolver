@@ -108,10 +108,10 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
         Form form = new Form();
         form.setLayout ( new VerticalPanel()
             .addChild(new HorizontalPanel()
-                    .addChild(new TextField(struct.digitalniKnihovna.NAZEV))
-                    .addChild(new TextField(struct.digitalniKnihovna.URL))
+                .addChild(new TextField(struct.digitalniKnihovna.KODRDCZ))
+                .addChild(new TextField(struct.digitalniKnihovna.NAZEV).setWidth("30em"))
+                .addChild(new TextField(struct.digitalniKnihovna.URL).setWidth("50em"))
             )
-            
             .addChild(new TextArea(struct.digitalniKnihovna.ADRESA))
         );
         return form;
@@ -121,10 +121,13 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
     private Form createInstituceForm(){
         Form form = new Form();
         form.setLayout ( new VerticalPanel()
-            .addChild(new TextField(struct.instituce.SIGLA))
-            .addChild(new TextField(struct.instituce.NAZEV))
-            .addChild(new TextField(struct.instituce.LINK))
-            .addChild(new TextField(struct.instituce.PREFIX))
+            .addChild(new HorizontalPanel()
+                .addChild(new TextField(struct.instituce.SIGLA))
+                .addChild(new TextField(struct.instituce.NAZEV))
+            ).addChild(new HorizontalPanel()
+                .addChild(new TextField(struct.instituce.PREFIX))
+                .addChild(new TextField(struct.instituce.LINK))
+            )
         );
         return form;
     }
@@ -132,13 +135,15 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
     private Form createZverejnenoForm(){
         Form form = new Form();
         form.setLayout ( new VerticalPanel()
-            .addChild(new TextField(struct.zverejneno.URL))
-            .addChild(new DateField(struct.zverejneno.ZVEREJNENO_DNE))
-            .addChild(new TextField(struct.zverejneno.ZVEREJNENO_KYM))
-            .addChild(new RefButton(struct.zverejneno.DIGITALNI_KNIHOVNA, digitalniKnihovnaArr,
-                    new HorizontalPanel()
-                        .addChild(new TextField(struct.zverejneno.DIGITALNI_KNIHOVNA.relate(struct.digitalniKnihovna.NAZEV)))
-                        .addChild(new TextField(struct.zverejneno.DIGITALNI_KNIHOVNA.relate(struct.digitalniKnihovna.URL))))
+            .addChild(new TextField(struct.zverejneno.URL).setWidth("30em"))
+            .addChild(new HorizontalPanel()
+                .addChild(new DateField(struct.zverejneno.ZVEREJNENO_DNE))
+                .addChild(new TextField(struct.zverejneno.ZVEREJNENO_KYM).setWidth("30em"))
+            ).addChild(new RefButton(struct.zverejneno.DIGITALNI_KNIHOVNA, digitalniKnihovnaArr,
+                 new HorizontalPanel()
+                     .addChild(new TextField(struct.zverejneno.DIGITALNI_KNIHOVNA.relate(struct.digitalniKnihovna.NAZEV)).setWidth("30em"))
+                     .addChild(new TextField(struct.zverejneno.DIGITALNI_KNIHOVNA.relate(struct.digitalniKnihovna.URL)).setWidth("30em"))
+                 )
             )
         );
         return form;
@@ -153,27 +158,26 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
                     )
         )*/
             .addChild(new HorizontalPanel()
-            
-                .addChild(new TextField(struct.digitalniReprezentace.CISLO_RDCZ))
+                .addChild(new TextField(struct.digitalniReprezentace.CISLO_RDCZ).setWidth("20em"))
                 .addChild(new TextField(struct.digitalniReprezentace.URNNBN))
                 .addChild(new CheckBox(struct.digitalniReprezentace.AKTIVNI))
+            ).addChild(new HorizontalPanel()
                 .addChild(new DateField(struct.digitalniReprezentace.PRIDELENO_DNE))
                 .addChild(new TextField(struct.digitalniReprezentace.PRIDELENO_KYM))
-                
-            )
-            .addChild(new HorizontalPanel()
-                .addChild(new TextField(struct.digitalniReprezentace.DOSTUPNOST))
-                .addChild(new TextField(struct.digitalniReprezentace.BAREVNOST))
-                .addChild(new TextField(struct.digitalniReprezentace.FORMAT))
-                .addChild(new TextField(struct.digitalniReprezentace.ROZLISENI))
-                .addChild(new TextField(struct.digitalniReprezentace.ROZSAH))
-            )
-            .addChild(new RefButton(struct.digitalniReprezentace.INSTITUCE, instituceArr,
+            ).addChild(new HorizontalPanel()
+                .addChild(new TextField(struct.digitalniReprezentace.DOSTUPNOST).setWidth("30em"))
+                .addChild(new TextField(struct.digitalniReprezentace.BAREVNOST).setWidth("30em"))
+                .addChild(new TextField(struct.digitalniReprezentace.FORMAT).setWidth("30em"))
+            ).addChild(new HorizontalPanel()
+                .addChild(new TextField(struct.digitalniReprezentace.ROZLISENI).setWidth("30em"))
+                .addChild(new TextField(struct.digitalniReprezentace.ROZSAH).setWidth("30em"))
+            ).addChild(new HorizontalPanel()
+                .addChild(new RefButton(struct.digitalniReprezentace.INSTITUCE, instituceArr,
                     new HorizontalPanel()
-                        .addChild(new TextField(struct.digitalniReprezentace.INSTITUCE.relate(struct.instituce.NAZEV)))
-                        )
+                        .addChild(new TextField(struct.digitalniReprezentace.INSTITUCE.relate(struct.instituce.NAZEV)).setWidth("30em"))
+                    )
+                ).addChild(new RepeatedForm(struct.digitalniReprezentace.ZVEREJNENO, zverejnenoArr))
             )
-            .addChild(new RepeatedForm(struct.digitalniReprezentace.ZVEREJNENO, zverejnenoArr))
         );
         return form;
     }
@@ -181,24 +185,25 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
     private Form createIntelektualniEntitaForm(){
         Form form = new Form();
         form.setLayout ( new VerticalPanel()
-            .addChild(new TextField(struct.intelektualniEntita.NAZEV))
             .addChild(new HorizontalPanel()
-                .addChild(new TextField(struct.intelektualniEntita.CCNB))
-                .addChild(new TextField(struct.intelektualniEntita.ISBN))
-            )
-            .addChild(new TextField(struct.intelektualniEntita.DALSI_NAZEV))
+                .addChild(new TextField(struct.intelektualniEntita.CCNB).setWidth("30em"))
+                .addChild(new TextField(struct.intelektualniEntita.ISBN).setWidth("30em"))
+                .addChild(new TextField(struct.intelektualniEntita.JINY_ID).setWidth("30em"))
+            ).addChild(new TextField(struct.intelektualniEntita.NAZEV).setWidth("80em"))
+            .addChild(new TextField(struct.intelektualniEntita.DALSI_NAZEV).setWidth("80em"))
             .addChild(new HorizontalPanel()
-                .addChild(new TextField(struct.intelektualniEntita.AUTOR))
-                .addChild(new TextField(struct.intelektualniEntita.KORPORACE))
-                .addChild(new TextField(struct.intelektualniEntita.AKCE))
-            )
-            .addChild(new TextField(struct.intelektualniEntita.DRUH_DOKUMENTU))
+                .addChild(new TextField(struct.intelektualniEntita.AUTOR).setWidth("30em"))
+                .addChild(new TextField(struct.intelektualniEntita.KORPORACE).setWidth("30em"))
+                .addChild(new TextField(struct.intelektualniEntita.AKCE).setWidth("30em"))
+            ).addChild(new HorizontalPanel()
+                .addChild(new TextField(struct.intelektualniEntita.ROCNIK_PERIODIKA).setWidth("20em"))
+                .addChild(new TextField(struct.intelektualniEntita.CISLO_PERIODIKA).setWidth("20em"))
+            ).addChild(new TextField(struct.intelektualniEntita.DRUH_DOKUMENTU).setWidth("30em"))
             .addChild(new HorizontalPanel()
-                .addChild(new TextField(struct.intelektualniEntita.VYDAVATEL))
-                .addChild(new TextField(struct.intelektualniEntita.MISTO_VYDANI))
-                .addChild(new TextField(struct.intelektualniEntita.ROK_VYDANI))
-            )
-            .addChild(new RepeatedForm(struct.intelektualniEntita.DIGITALNI_REPREZENTACE, digitalniReprezentaceArr))
+                .addChild(new TextField(struct.intelektualniEntita.VYDAVATEL).setWidth("30em"))
+                .addChild(new TextField(struct.intelektualniEntita.MISTO_VYDANI).setWidth("30em"))
+                .addChild(new TextField(struct.intelektualniEntita.ROK_VYDANI).setWidth("30em"))
+            ).addChild(new RepeatedForm(struct.intelektualniEntita.DIGITALNI_REPREZENTACE, digitalniReprezentaceArr))
         );
         return form;
     }
