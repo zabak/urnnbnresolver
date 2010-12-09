@@ -10,8 +10,8 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyPressEvent;
-import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
@@ -136,10 +136,10 @@ public class Main implements EntryPoint {
 
         searchBox = new TextBox();
         searchBox.addStyleName(MainResources.INSTANCE.css().searchBox());
-        searchBox.addKeyPressHandler(new KeyPressHandler() {
+        searchBox.addKeyDownHandler(new KeyDownHandler() {
             @Override
-            public void onKeyPress(KeyPressEvent event) {
-                if (KeyCodes.KEY_ENTER == event.getUnicodeCharCode()){
+            public void onKeyDown(KeyDownEvent event) {
+                if (KeyCodes.KEY_ENTER == event.getNativeKeyCode()){
                     doSearch();
                 }
             }
