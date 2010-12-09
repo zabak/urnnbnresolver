@@ -1,25 +1,82 @@
-.searchPanel {
-    margin: 2px;
-    border: 1px solid;
-    padding: 2px;
-    font-size: 16px;
+
+@external body, table, td, a;
+
+body, table td{
+    font-family:verdana,arial,helvetica,sans-serif;
 }
 
+a, a:visited{
+    color: red;
+    text-decoration: none;
+}
 
+a:hover{
+    color: red;
+    text-decoration: underline;
+}
     
 .headerPanel{
-    color: #333399;
-    font-size: 40px;
-    margin: 2px;
+    
+}
+
+.languageSwitch{
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.headerTitle{
+    color: black;
+    font-size: 32px;
+    
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.headerSubtitle{
+    color: #AAA;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.headerTitlePanel{
+    padding-left: 17px;
+    padding-top: 22px;
+}
+
+.searchPanel {
+    background-color: gray;
     padding: 2px;
-    background-color: #cccccc;
+}
+
+.searchBox {
+    margin: 0px;
+    width: 350px;
+    height: 17px;
+    font-size: 12px;
+}
+
+.searchButton {
+   margin: 1px;
+   
+}
+
+.searchStatistic {
+   margin-top: 5px;
+   font-size: 12px;
 }
 
 .mainPanel{
-    color: black;
-    font-size: 16px;
-    margin: 2px;
-    
-    border: 1px solid;
+    color: #666;
+    font-size: 12px;
     padding: 2px;
+    
+    
+   
+}
+
+.footerPanel{
+    color: black;
+    font-size: 11px;
+    padding: 2px;
+   border-top: 4px solid #EEE;
 }

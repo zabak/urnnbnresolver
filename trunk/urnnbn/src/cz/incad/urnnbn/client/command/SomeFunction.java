@@ -24,8 +24,8 @@ public class SomeFunction extends BindableCommand {
         if (contents == null) {
             VerticalPanel vSplit = new VerticalPanel();
             // vSplit.setSize("600px", "400px");
-            vSplit.add(new TextFieldWidget("WizardField1", false));
-            vSplit.add(new TextFieldWidget("WizardField2", false));
+            vSplit.add(new TextFieldWidget("WizardField1", null,  false, null));
+            vSplit.add(new TextFieldWidget("WizardField2", null, false, null));
             vSplit.add(new Button("Execute"));
             SimplePanel decPanel = new SimplePanel();
             // decPanel.setSize("800px", "450px");
