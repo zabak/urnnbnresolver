@@ -51,18 +51,48 @@ jak se do RD.cz dostávají URL - zachycují se někde změny?
 
 == 7. další rozvoj ==
 
-k debatě
+*_Nová digitalizace_*
 
- * Workflow pro dodávaní dat do resolveru 1 - doplnění techMD k existujícícm záznamům  (= získání  tech MD i jiných metadat z DTD + vytvoření čísel z našich DTD + získání dalších metadat např. URL z K4 - přes OAI-PMH)
- 
  * Workflow pro vstup dat z nové digitalizace 2 – vymyslet jak se dostanou URN:NBN přidělená během digitalizace (nebo obecně externě - Sirius, Transf. modul) do resolveru + vymyslet, jak se k nim dostane URL
  
  * Workflow pro vstup dat z nové externí digitalizace 3 – pro případy, kdy se i zakládá nový dokument v rd.cz – podle mě ideálně při jedné operaci přidělit záznam v rd.cz a rovnou nahrát do resolveru, přidělit neaktivní identifikátory pro dokument. Pak ve druhé fázi, pokud bude mít zájem, připojit k číslu zakázky čísla – do rd.cz a pak do revolveru – zde by data mohla přijít už rovnou s URL…?
  
-Editor – asi bude třeba mít nějaký metadata editor – nějaký interface, který bude umožňovat dělat z ročníků periodik issues, a umět identifikátory urn.nbn issue odeslat do K4, také funkce jako přidávání polí metadat, nastavení profilů oai, nastavení zdrojů sklízení
+*_Stávající data_*
+
+Jak dostat URN:NBN a technická metadata k nasim existujícím datům a do k4 a URL z  K4 do resolveru, na úroven čísel? 
+
+1) verze 
+ * v rámci přípravy dat pro ingest do nového LTP
+ * manualne nebo poloautomaticky vzit DTD nasich balíků
+ * importovat ke kazdé zakázce do RD.CZ is čísla a techMD
+ * natáhnout všechny issues do resolveru jako entity a digiátlní dokumenty
+ * přidělit jim urn.nbn
+ * ke každé zákázce exportovat z resolveru jedno xml s identifikaci vsech issues + pridelenými urn.nbn
+ * to pak použit pri ingestu do LTP
+ * resolver zná URL odpovídající ročníku v K4, získá z K4 URL všech podřízených issue...? 
+
+2) verze -
+ * resolver přidělí urn nbn tomu, co máme v RD.CZ (pro data z visku a naše data) 
+ * resolver zná URL odpovídající ročníku v K4, získá z K4 URL všech podřízených issue a založí je jako entity v resolveru...? 
+ * seznam issues + urn nbn ke každému číslu zakázky vyexportujeme do xml
+ * při ingestu archivu do LTP vezeme urn nbn z tohoto xml 
+
+3) verze
+ * resolver přidělí urn nbn tomu, co máme v RD.CZ (pro data z visku a naše data) 
+ * pri ingestu vygenerujeme v LTP systému (trans modulu) urn nbn pro každé issue
+ * každé issue tak pujde do LTP se dvema urn nbn v metadatech: jedno pro issue jedno pro nadřízenou entitu (číslo zakázky, ročník)
+ * z LTP  nejak musme vyexportovat seznam issues, jejich techMD a pridelena urn nbn a dostat do resolveru (oai? nebo xml csv rovnou do databáze?) 
+ * resolver pak musi nejak ziskat odpovidajici URL z k4:-)
+
+
+*_Editor_*
+
+asi bude třeba mít nějaký metadata editor – nějaký interface, který bude umožňovat dělat z ročníků periodik issues, a umět identifikátory urn.nbn issue odeslat do K4, také funkce jako přidávání polí metadat, nastavení profilů oai, nastavení zdrojů sklízení
 
  
-Vazby na K4 – K4 musí
+*_Vazby na K4_*
+
+K4 musí
  * Obohatit metadata čísel v K4 o urn nbn jak? (přes OAI-PMH)
  * Odeslat nebo vystavit metadata z k4 tak, aby resolver uměl sklidit nově přicházející dokumenty (titles, ročniky, issues) a přidělit identifikátory
  * Získat url pro data, která už v K4 budou mít identifikátor (IOP)
