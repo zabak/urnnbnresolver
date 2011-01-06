@@ -1,0 +1,21 @@
+věci, které zatím chybí oproti zadání.
+
+== funkce přesměrování (zadání str. 5-6) ==
+
+“po kliknutí na URN:NBN v katalogu možnost přímo zobrazit objekt v nějaké
+vybrané lokaci (v katalogu jsou již metadata, nemá smysl odkazovat na další
+metadatovou stránku)
+tj. server identifikuje IP uživatele, který sedí v té konkrétní knihovně a vrátí mu přímo jen
+dostupnou kopii, tj. tu, kterou ta knihovna má ve sbírce a může ji v budově zpřístupnit; v případě, že žádná kopie není volně dostupná danému uživateli- vrátí stránku metadatovou stránku”
+
+_tato možnost patrně chybí - i když zatím v katalogu není v polích URN:NBN, měli bychom se pobavit jak to připravit v resolveru_
+
+== URN:NBN mají i dokumenty, které jsou mimo NK, VISK7 a Norské fondy(zadání str. 2) ==
+nevíme, zda nejsou přidělena URN:NBN dokumentům, které nemá NK ve svém úložišti - tj. dokumenty, kt. vznikly mimo digitalizaci NK, VISK7 a Norské fondy. 
+
+* _nelze to poznat, je tento údaj v RD.cz? jak zařídit, aby když přijde do RD.cz dokument, kt. si někdo udělal na koleně v Horní Dolní za svoje peníze, nedostal URN:NBN?_
+
+* _je nutné z resolveru takové dokumenty smazat, pokud tam jsou_
+==
+
+
