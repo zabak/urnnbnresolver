@@ -53,9 +53,9 @@ jak se do RD.cz dostávají URL - zachycují se někde změny?
 
 *_Nová digitalizace_*
 
- * Workflow pro vstup dat z nové digitalizace 2 – vymyslet jak se dostanou URN:NBN přidělená během digitalizace (nebo obecně externě - Sirius, Transf. modul) do resolveru + vymyslet, jak se k nim dostane URL
+ * Workflow pro vstup dat z nové digitalizace – vymyslet jak se dostanou URN:NBN přidělená během digitalizace (nebo obecně externě - Sirius, Transf. modul) do resolveru + vymyslet, jak se k nim dostane URL
  
- * Workflow pro vstup dat z nové externí digitalizace 3 – pro případy, kdy se i zakládá nový dokument v rd.cz – podle mě ideálně při jedné operaci přidělit záznam v rd.cz a rovnou nahrát do resolveru, přidělit neaktivní identifikátory pro dokument. Pak ve druhé fázi, pokud bude mít zájem, připojit k číslu zakázky čísla – do rd.cz a pak do revolveru – zde by data mohla přijít už rovnou s URL…?
+ * Workflow pro vstup dat z nové externí digitalizace – pro případy, kdy se i zakládá nový dokument v rd.cz – podle mě ideálně při jedné operaci přidělit záznam v rd.cz a rovnou nahrát do resolveru, přidělit neaktivní identifikátory pro dokument. Pak ve druhé fázi, pokud bude mít zájem, připojit k číslu zakázky čísla – do rd.cz a pak do revolveru – zde by data mohla přijít už rovnou s URL…?
  
 *_Stávající data_*
 
