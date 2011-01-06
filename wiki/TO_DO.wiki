@@ -23,13 +23,14 @@ možnost vrátit se na úvodní stránku s příklady k hledání
 “po kliknutí na URN:NBN v katalogu možnost přímo zobrazit objekt v nějaké
 vybrané lokaci (v katalogu jsou již metadata, nemá smysl odkazovat na další
 metadatovou stránku)
-tj. server identifikuje IP uživatele, který sedí v té konkrétní knihovně a vrátí mu přímo jen
-dostupnou kopii, tj. tu, kterou ta knihovna má ve sbírce a může ji v budově zpřístupnit; v případě, že žádná kopie není volně dostupná danému uživateli- vrátí stránku metadatovou stránku”
+tj. server identifikuje IP uživatele, který sedí v té konkrétní knihovně a vrátí mu přímo jen dostupnou kopii, tj. tu, kterou ta knihovna má ve sbírce a může ji v budově zpřístupnit; v případě, že žádná kopie není volně dostupná danému uživateli- vrátí metadatovou stránku”
 
-_tato možnost patrně chybí - i když zatím v katalogu není v polích URN:NBN, měli bychom se pobavit jak to připravit v resolveru_
+_i když zatím v katalogu není URN:NBN, měli bychom se pobavit jak na to připravit resolver_
+
+Online resolving při zadaní url obsahujícího urn.nbn (www.resolver.nkp.cz/urn:nbn-aba0001-123456L)
 
 
-= debata > =
+= k debatě  > =
 
 == 5. poznámky k data modelu ==
 
@@ -52,7 +53,7 @@ jak se do RD.cz dostávají URL - zachycují se někde změny?
 
 k debatě
 
- * Workflow pro dodávaní dat do resolveru 1 - OAI-PMH – doplnění techMD k existujícícm záznamům  (= získání  tech MD i jiných metadat z DTD + vytvoření čísel z našich DTD + získání dalších metadat např. URL z K4 - přes OAI-PMH)
+ * Workflow pro dodávaní dat do resolveru 1 - doplnění techMD k existujícícm záznamům  (= získání  tech MD i jiných metadat z DTD + vytvoření čísel z našich DTD + získání dalších metadat např. URL z K4 - přes OAI-PMH)
  
  * Workflow pro vstup dat z nové digitalizace 2 – vymyslet jak se dostanou URN:NBN přidělená během digitalizace (nebo obecně externě - Sirius, Transf. modul) do resolveru + vymyslet, jak se k nim dostane URL
  
@@ -60,8 +61,6 @@ k debatě
  
 Editor – asi bude třeba mít nějaký metadata editor – nějaký interface, který bude umožňovat dělat z ročníků periodik issues, a umět identifikátory urn.nbn issue odeslat do K4, také funkce jako přidávání polí metadat, nastavení profilů oai, nastavení zdrojů sklízení
 
-Online resolving při zadaní url obsahujícího urn.nbn (www.resolver.nkp.cz/urn:nbn-aba0001-123456L)
- * možnost vyhledávání dokumentů i podle URL? libí se mi německý příklad - http://nbn-resolving.de/ResolverDemo-eng.php
  
 Vazby na K4 – K4 musí
  * Obohatit metadata čísel v K4 o urn nbn jak? (přes OAI-PMH)
