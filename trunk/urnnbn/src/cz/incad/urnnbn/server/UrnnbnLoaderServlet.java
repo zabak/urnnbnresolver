@@ -48,31 +48,31 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             digitalniKnihovnaArr.setReadableName(struct.digitalniKnihovna.getName());
             digitalniKnihovnaArr.addProperty(struct.digitalniKnihovna.NAZEV).addProperty(struct.digitalniKnihovna.URL).addProperty(struct.digitalniKnihovna.ADRESA);
             digitalniKnihovnaArr.setSortProperty(struct.digitalniKnihovna.NAZEV);
-            digitalniKnihovnaArr.form = createDigitalniKnihovnaForm();
+            digitalniKnihovnaArr.setForm(createDigitalniKnihovnaForm());
            
             instituceArr = new Arrangement(struct.instituce);
             instituceArr.setReadableName(struct.instituce.getName());
             instituceArr.addProperty(struct.instituce.SIGLA).addProperty(struct.instituce.NAZEV).addProperty(struct.instituce.LINK).addProperty(struct.instituce.PREFIX);
-            instituceArr.form = createInstituceForm();
+            instituceArr.setForm(createInstituceForm());
            
             
             zverejnenoArr = new Arrangement(struct.zverejneno);
             zverejnenoArr.setReadableName(struct.zverejneno.getName());
             zverejnenoArr.addProperty(struct.zverejneno.URL).addProperty(struct.zverejneno.ZVEREJNENO_DNE).addProperty(struct.zverejneno.ZVEREJNENO_KYM).addProperty(struct.zverejneno.DIGITALNI_KNIHOVNA.relate(struct.digitalniKnihovna.NAZEV));
-            zverejnenoArr.form = createZverejnenoForm();
+            zverejnenoArr.setForm(createZverejnenoForm());
            
             
             digitalniReprezentaceArr = new Arrangement(struct.digitalniReprezentace);
             digitalniReprezentaceArr.setReadableName(struct.digitalniReprezentace.getName());
             digitalniReprezentaceArr.addProperty(struct.digitalniReprezentace.URNNBN).addProperty(struct.digitalniReprezentace.CISLO_RDCZ);
-            digitalniReprezentaceArr.form = createDigitalniReprezentaceForm();
+            digitalniReprezentaceArr.setForm(createDigitalniReprezentaceForm());
             
             
             
             intelektualniEntitaArr = new Arrangement(struct.intelektualniEntita);
             intelektualniEntitaArr.setReadableName(struct.intelektualniEntita.getName());
             intelektualniEntitaArr.addProperty(struct.intelektualniEntita.NAZEV).addProperty(struct.intelektualniEntita.CCNB);
-            intelektualniEntitaArr.form = createIntelektualniEntitaForm();
+            intelektualniEntitaArr.setForm(createIntelektualniEntitaForm());
             
             nacistData = new Function("NacistData", new NacistData());
             priraditUrnnbn = new Function("PriraditUrnnbn", new PriraditUrnnbn());
