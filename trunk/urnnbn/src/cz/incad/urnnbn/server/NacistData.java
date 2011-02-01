@@ -37,6 +37,8 @@ public class NacistData implements Executable {
     private String RDCZInstSelect = "select value, cz from dlists where classname = 'cz.incad.nkp.digital.InsVlastnik'";
     private String RDCZKnihSelect = "select value, cz from dlists where classname = 'cz.incad.nkp.digital.InsDigitalniKnihovna'";
     
+    
+   
     @Override
     public FunctionResult execute(FunctionParameters parameters) {
        int counter = 0;

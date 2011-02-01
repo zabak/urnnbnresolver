@@ -79,8 +79,8 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             intelektualniEntitaArr.queryGenerator = new QueryGenerator.Empty();
             intelektualniEntitaArr.form = createIntelektualniEntitaForm();
             
-            nacistData = new Function(new NacistData());
-            priraditUrnnbn = new Function(new PriraditUrnnbn());
+            nacistData = new Function("NacistData", new NacistData());
+            priraditUrnnbn = new Function("PriraditUrnnbn", new PriraditUrnnbn());
             
             
             System.out.println("ApplicationLoader 3");
@@ -92,8 +92,8 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             places.addAction(new ActionDTO("Entita", new ListEntities( "Entita", places, intelektualniEntitaArr.getId()) ));
             places.addAction(new ActionDTO("DigitalniReprezentace", new ListEntities( "DigitalniReprezentace", places, digitalniReprezentaceArr.getId()) ));
             ServiceDTO functions = new ServiceDTO("Funkce");
-            functions.addAction(new ActionDTO("NacistData", new ExecuteFunction( "NacistData", functions, nacistData.getId()) ));
-            functions.addAction(new ActionDTO("PriraditURNNBN", new ExecuteFunction( "PriraditURNNBN", functions, priraditUrnnbn.getId()) ));
+            functions.addAction(new ActionDTO("NacistData", new ExecuteFunction(  functions, nacistData.getFunctionDTO()) ));
+            functions.addAction(new ActionDTO("PriraditURNNBN", new ExecuteFunction(  functions, priraditUrnnbn.getFunctionDTO()) ));
             applicationDescriptor.addService(places);
             applicationDescriptor.addService(functions);
             System.out.println("ApplicationLoader finished");
