@@ -32,6 +32,16 @@
     <servlet-class>cz.incad.urnnbn.search.server.rpc.SearchServiceImpl</servlet-class>
   </servlet>
   
+  <filter>
+    <filter-name>resolverFilter</filter-name>
+    <filter-class>cz.incad.urnnbn.search.server.ResolverFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>resolverFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
   <servlet-mapping>
     <servlet-name>aplikatorInitializer</servlet-name>
     <url-pattern>/urnnbn/ddl</url-pattern>

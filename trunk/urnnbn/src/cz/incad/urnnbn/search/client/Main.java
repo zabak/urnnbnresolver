@@ -156,7 +156,7 @@ public class Main implements EntryPoint {
                 + "<span style=\"color: black;\">URN:NBN</span> (např.:&nbsp;<span>URN:NBN:CZ:ABA010:00000P</span>&nbsp;)<br>" 
                 + "<span style=\"color: black;\">čČNB</span> (např.:&nbsp;<span>cnb001753438</span>&nbsp;)<br>" 
                 + "<span style=\"color: black;\">ISBN</span> (např.:&nbsp;<span>80-7051-047-1</span>&nbsp;)<br>"
-                + "<span style=\"color: black;\">ISSN</span> (např.:&nbsp;<span>1802-6265, 0862-5921</span>&nbsp;)<br>");
+                + "<span style=\"color: black;\">ISSN</span> (např.:&nbsp;<span>1802-6265</span>&nbsp;)<br>");
         
         tree.addItem(helpLabel);
         
