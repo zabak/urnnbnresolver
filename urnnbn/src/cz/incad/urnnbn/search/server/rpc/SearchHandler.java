@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aplikator.server.Context;
 import org.aplikator.server.persistence.Persister;
 import org.aplikator.server.rpc.CommandHandler;
 
@@ -28,7 +29,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     " from digitalni_reprezentace dr left outer join intelektualni_entita ie on dr.intelektualni_entita = ie.ie_id "+
     " where dr.urnnbn = ? or ie.isbn = ? or ie.issn = ? or ie.ccnb = ? "; 
 
-    public SearchResponse execute(Search command) {
+    public SearchResponse execute(Search command, Context context) {
         Connection conn = null;
         try{
             conn = persister.getJDBCConnection();

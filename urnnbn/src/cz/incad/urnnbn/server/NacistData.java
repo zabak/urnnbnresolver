@@ -40,7 +40,7 @@ public class NacistData implements Executable {
     
    
     @Override
-    public FunctionResult execute(FunctionParameters parameters) {
+    public FunctionResult execute(FunctionParameters parameters,  org.aplikator.server.Context context) {
        int counter = 0;
         Connection RDCZconn = null;
         try{

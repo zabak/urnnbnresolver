@@ -31,7 +31,7 @@ public class PriraditUrnnbn implements Executable {
      
     private static final String RDCZupdateURNNBN = "update predloha set urnnbn = ?, urnnbnflag = 3 where idcislo = ?";
     @Override
-    public FunctionResult execute(FunctionParameters parameters) {
+    public FunctionResult execute(FunctionParameters parameters,  org.aplikator.server.Context context) {
         Connection RDCZconn = null;
         try{
             if (persister == null){

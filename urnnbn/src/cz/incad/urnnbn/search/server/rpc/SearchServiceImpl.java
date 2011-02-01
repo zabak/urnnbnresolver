@@ -3,8 +3,12 @@ package cz.incad.urnnbn.search.server.rpc;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.aplikator.client.rpc.Command;
 import org.aplikator.client.rpc.Response;
+import org.aplikator.server.impl.ContextImpl;
 import org.aplikator.server.persistence.Persister;
 import org.aplikator.server.persistence.PersisterFactory;
 import org.aplikator.server.rpc.CommandHandler;
@@ -30,7 +34,9 @@ public class SearchServiceImpl extends RemoteServiceServlet implements SearchSer
     @SuppressWarnings("unchecked")
     public <T extends Response> T execute(Command<T> command){
         CommandHandler<Command<T>, T> handler = (CommandHandler<Command<T>, T>)handlers.get(command.getClass());
-        return handler.execute(command);
+        HttpServletRequest httpServletRequest = this.getThreadLocalRequest();
+        HttpServletResponse httpServletResponse = this.getThreadLocalResponse();
+        return handler.execute(command, new ContextImpl(httpServletRequest, httpServletResponse));
     }
     
 }

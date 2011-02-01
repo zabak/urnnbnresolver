@@ -92,8 +92,8 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             places.addAction(new ActionDTO("Entita", new ListEntities( "Entita", places, intelektualniEntitaArr.getId()) ));
             places.addAction(new ActionDTO("DigitalniReprezentace", new ListEntities( "DigitalniReprezentace", places, digitalniReprezentaceArr.getId()) ));
             ServiceDTO functions = new ServiceDTO("Funkce");
-            functions.addAction(new ActionDTO("NacistData", new ExecuteFunction(  functions, nacistData.getFunctionDTO()) ));
-            functions.addAction(new ActionDTO("PriraditURNNBN", new ExecuteFunction(  functions, priraditUrnnbn.getFunctionDTO()) ));
+            functions.addAction(new ActionDTO("NacistData", new ExecuteFunction(  functions, nacistData.getFunctionDTO(null)) ));//TODO null context
+            functions.addAction(new ActionDTO("PriraditURNNBN", new ExecuteFunction(  functions, priraditUrnnbn.getFunctionDTO(null)) ));//TODO null context
             applicationDescriptor.addService(places);
             applicationDescriptor.addService(functions);
             System.out.println("ApplicationLoader finished");
