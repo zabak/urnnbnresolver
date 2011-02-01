@@ -48,27 +48,23 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             digitalniKnihovnaArr.setReadableName(struct.digitalniKnihovna.getName());
             digitalniKnihovnaArr.addProperty(struct.digitalniKnihovna.NAZEV).addProperty(struct.digitalniKnihovna.URL).addProperty(struct.digitalniKnihovna.ADRESA);
             digitalniKnihovnaArr.setSortProperty(struct.digitalniKnihovna.NAZEV);
-            digitalniKnihovnaArr.queryGenerator = new QueryGenerator.Empty();
             digitalniKnihovnaArr.form = createDigitalniKnihovnaForm();
            
             instituceArr = new Arrangement(struct.instituce);
             instituceArr.setReadableName(struct.instituce.getName());
             instituceArr.addProperty(struct.instituce.SIGLA).addProperty(struct.instituce.NAZEV).addProperty(struct.instituce.LINK).addProperty(struct.instituce.PREFIX);
-            instituceArr.queryGenerator = new QueryGenerator.Empty();
             instituceArr.form = createInstituceForm();
            
             
             zverejnenoArr = new Arrangement(struct.zverejneno);
             zverejnenoArr.setReadableName(struct.zverejneno.getName());
             zverejnenoArr.addProperty(struct.zverejneno.URL).addProperty(struct.zverejneno.ZVEREJNENO_DNE).addProperty(struct.zverejneno.ZVEREJNENO_KYM).addProperty(struct.zverejneno.DIGITALNI_KNIHOVNA.relate(struct.digitalniKnihovna.NAZEV));
-            zverejnenoArr.queryGenerator = new QueryGenerator.Empty();
             zverejnenoArr.form = createZverejnenoForm();
            
             
             digitalniReprezentaceArr = new Arrangement(struct.digitalniReprezentace);
             digitalniReprezentaceArr.setReadableName(struct.digitalniReprezentace.getName());
             digitalniReprezentaceArr.addProperty(struct.digitalniReprezentace.URNNBN).addProperty(struct.digitalniReprezentace.CISLO_RDCZ);
-            digitalniReprezentaceArr.queryGenerator = new QueryGenerator.Empty();
             digitalniReprezentaceArr.form = createDigitalniReprezentaceForm();
             
             
@@ -76,7 +72,6 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             intelektualniEntitaArr = new Arrangement(struct.intelektualniEntita);
             intelektualniEntitaArr.setReadableName(struct.intelektualniEntita.getName());
             intelektualniEntitaArr.addProperty(struct.intelektualniEntita.NAZEV).addProperty(struct.intelektualniEntita.CCNB);
-            intelektualniEntitaArr.queryGenerator = new QueryGenerator.Empty();
             intelektualniEntitaArr.form = createIntelektualniEntitaForm();
             
             nacistData = new Function("NacistData", new NacistData());
