@@ -1,6 +1,5 @@
-#summary One-sentence summary of this page.
 
-= Introduction =
+= výstupy ze schůzky 12.1.2011 =
 1)
 *hodnoty záznamů v RD.cz v poli financování* - pro to, aby do resolveru šlo jen to co má - tj. data NK
 
