@@ -36,7 +36,7 @@ public class SearchServiceImpl extends RemoteServiceServlet implements SearchSer
         CommandHandler<Command<T>, T> handler = (CommandHandler<Command<T>, T>)handlers.get(command.getClass());
         HttpServletRequest httpServletRequest = this.getThreadLocalRequest();
         HttpServletResponse httpServletResponse = this.getThreadLocalResponse();
-        return handler.execute(command, new ContextImpl(httpServletRequest, httpServletResponse));
+        return handler.execute(command, new ContextImpl(httpServletRequest, httpServletResponse, null));
     }
     
 }

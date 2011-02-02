@@ -27,6 +27,8 @@ public class Structure extends Application {
         public final Property MISTO_VYDANI;
         public final Property ROCNIK_PERIODIKA;
         public final Property CISLO_PERIODIKA;
+        public final Property FINANCOVANO;
+        public final Property CISLO_ZAKAZKY;
         public Collection DIGITALNI_REPREZENTACE;
 
         public IntelektualniEntita() {
@@ -46,6 +48,8 @@ public class Structure extends Application {
             ROCNIK_PERIODIKA= addProperty("ROCNIK_PERIODIKA", PropertyType.STRING, 200, false);
             CISLO_PERIODIKA= addProperty("CISLO_PERIODIKA", PropertyType.STRING, 200, false);
             MISTO_VYDANI= addProperty("MISTO_VYDANI", PropertyType.STRING, 255, false);
+            FINANCOVANO= addProperty("FINANCOVANO", PropertyType.STRING, 255, false);
+            CISLO_ZAKAZKY= addProperty("CISLO_ZAKAZKY", PropertyType.STRING, 255, false);
             
             addIndex("CCNB_IDX", false, CCNB);
             addIndex("ISBN_IDX", false, ISBN);
