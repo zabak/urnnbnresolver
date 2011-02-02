@@ -41,7 +41,7 @@ public class ResolverFilter implements Filter {
            //System.out.println("LIBRARY:"+library);
            if (library == null){
                ((HttpServletResponse)response).sendRedirect("/Main.jsp#"+path.substring(1));
-               //filterConfig.getServletContext().getRequestDispatcher("/Main.jsp?gwt.codesvr=127.0.0.1:9997#"+path.substring(1)).forward(request, response);
+               //filterConfig.getServletContext().getRequestDispatcher("/Main.jsp#"+path.substring(1)).forward(request, response);
            }else{
                ((HttpServletResponse)response).sendRedirect(searchHandler.findRedirect(path.substring(1), library));
            }
