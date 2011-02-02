@@ -44,6 +44,10 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             struct = (Structure)Application.get();
             System.out.println("ApplicationLoader 2");
             
+            
+            nacistData = new Function("NacistData", new NacistData());
+            priraditUrnnbn = new Function("PriraditUrnnbn", new PriraditUrnnbn());
+            
             digitalniKnihovnaArr = new Arrangement(struct.digitalniKnihovna);
             digitalniKnihovnaArr.addProperty(struct.digitalniKnihovna.NAZEV).addProperty(struct.digitalniKnihovna.URL).addProperty(struct.digitalniKnihovna.ADRESA);
             digitalniKnihovnaArr.setSortProperty(struct.digitalniKnihovna.NAZEV);
@@ -69,8 +73,6 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             intelektualniEntitaArr.addProperty(struct.intelektualniEntita.NAZEV).addProperty(struct.intelektualniEntita.CCNB);
             intelektualniEntitaArr.setForm(createIntelektualniEntitaForm());
             
-            nacistData = new Function("NacistData", new NacistData());
-            priraditUrnnbn = new Function("PriraditUrnnbn", new PriraditUrnnbn());
             
             
             System.out.println("ApplicationLoader 3");
@@ -151,6 +153,7 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
                 .addChild(new TextField(struct.digitalniReprezentace.CISLO_RDCZ).setWidth("20em"))
                 .addChild(new TextField(struct.digitalniReprezentace.URNNBN))
                 .addChild(new CheckBox(struct.digitalniReprezentace.AKTIVNI))
+                .addChild(priraditUrnnbn)
             ).addChild(new HorizontalPanel()
                 .addChild(new DateField(struct.digitalniReprezentace.PRIDELENO_DNE))
                 .addChild(new TextField(struct.digitalniReprezentace.PRIDELENO_KYM))

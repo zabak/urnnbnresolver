@@ -15,6 +15,7 @@ import org.apache.empire.db.DBCommand;
 import org.apache.empire.db.DBJoinType;
 import org.apache.empire.db.DBReader;
 import org.apache.empire.db.DBRecord;
+import org.aplikator.client.data.RecordDTO;
 import org.aplikator.server.descriptor.Application;
 import org.aplikator.server.function.Executable;
 import org.aplikator.server.function.FunctionParameters;
@@ -51,7 +52,14 @@ public class PriraditUrnnbn implements Executable {
             DBColumnExpr[] columns = new DBColumnExpr[]{s.digitalniReprezentace.getPrimaryKey().column, s.digitalniReprezentace.URNNBN.column, s.digitalniReprezentace.CISLO_RDCZ.column, s.instituce.PREFIX.column};   
             cmd.join(s.digitalniReprezentace.INSTITUCE.column, s.instituce.getPrimaryKey().column, DBJoinType.LEFT);
             cmd.select(columns);
-            cmd.where(s.digitalniReprezentace.URNNBN.column.is(null));
+            RecordDTO currentRecord = parameters.getClientContext().getCurrentRecord();
+            if (currentRecord==null){
+                cmd.where(s.digitalniReprezentace.URNNBN.column.is(null));
+                System.out.println("ASSIGN URN NBN - BULK");
+            }else{
+                cmd.where(s.digitalniReprezentace.getPrimaryKey().column.is(currentRecord.getPrimaryKey().getId()));
+                System.out.println("ASSIGN URN NBN : "+currentRecord.getPrimaryKey().getId());
+            }
             // Query Records and print output
             DBReader reader = new DBReader();
             try
