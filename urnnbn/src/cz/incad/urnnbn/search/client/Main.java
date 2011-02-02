@@ -1,5 +1,7 @@
 package cz.incad.urnnbn.search.client;
 
+import org.aplikator.client.descriptor.ActionDTO;
+import org.aplikator.client.impl.MainMenuTreeViewModel.Category;
 import org.aplikator.client.rpc.Callback;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -12,11 +14,15 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Dictionary;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.user.cellview.client.TreeNode;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
@@ -223,6 +229,22 @@ public class Main implements EntryPoint {
         mainPanel.addSouth(footerPanel, 40);
         mainPanel.add(resultsPanel);
         rootPanel.add(mainPanel);
+        
+     // Setup a history handler to reselect the associate menu item.
+        final ValueChangeHandler<String> historyHandler = new ValueChangeHandler<
+            String>() {
+          public void onValueChange(ValueChangeEvent<String> event) {
+            searchBox.setText(event.getValue());
+            doSearch();
+          }
+        };
+        History.addValueChangeHandler(historyHandler);
+
+        // Show the initial example.
+        if (History.getToken().length() > 0) {
+          History.fireCurrentHistoryState();
+        } 
+        
         Scheduler sch = new SchedulerImpl();
         sch.scheduleDeferred(new Command()
         {
@@ -246,6 +268,7 @@ public class Main implements EntryPoint {
                 parseNode(resp.getResults(), root);
                 //root.setState(true,true);
                 //resultsPanel.setWidget(tree);
+                History.newItem(searchBox.getText().trim(), true);
             }
         });
     }

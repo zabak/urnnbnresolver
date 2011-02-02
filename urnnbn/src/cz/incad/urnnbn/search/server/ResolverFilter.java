@@ -9,28 +9,42 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import cz.incad.urnnbn.search.server.rpc.SearchHandler;
 
 
 public class ResolverFilter implements Filter {
 
     private FilterConfig filterConfig = null;
+    private SearchHandler searchHandler;
     
-    public void init(FilterConfig filterConfig) 
-       throws ServletException {
+    public void init(FilterConfig filterConfig)  throws ServletException {
        this.filterConfig = filterConfig;
+       searchHandler = SearchHandler.get();
     }
+    
     public void destroy() {
        this.filterConfig = null;
+       searchHandler = null;
     }
+    
     public void doFilter(ServletRequest request,
        ServletResponse response, FilterChain chain) 
        throws IOException, ServletException {
        if (filterConfig == null)
           return;
        String path = ((HttpServletRequest)request).getServletPath();
-       System.out.println("REQUEST:"+path);
+       //System.out.println("REQUEST:"+path);
        if (path != null && path.startsWith("/URN:NBN:CZ")){
-           filterConfig.getServletContext().getRequestDispatcher("/Main.jsp").forward(request, response);
+           String library = ((HttpServletRequest)request).getParameter("library");
+           //System.out.println("LIBRARY:"+library);
+           if (library == null){
+               ((HttpServletResponse)response).sendRedirect("/Main.jsp#"+path.substring(1));
+               //filterConfig.getServletContext().getRequestDispatcher("/Main.jsp?gwt.codesvr=127.0.0.1:9997#"+path.substring(1)).forward(request, response);
+           }else{
+               ((HttpServletResponse)response).sendRedirect(searchHandler.findRedirect(path.substring(1), library));
+           }
        }else{
            chain.doFilter(request, response);
        }

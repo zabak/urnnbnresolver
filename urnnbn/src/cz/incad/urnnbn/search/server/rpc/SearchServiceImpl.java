@@ -27,8 +27,8 @@ public class SearchServiceImpl extends RemoteServiceServlet implements SearchSer
     private final Map<Class<? extends Command<?>>, CommandHandler<? extends Command<?>, ? extends Response>> handlers = new HashMap<Class<? extends Command<?>>, CommandHandler<? extends Command<?>, ? extends Response>>();
     
     {//init block - register command handlers
-        Persister p = PersisterFactory.getPersister();//new EmpireDbPersister();
-        handlers.put(Search.class, new SearchHandler(p));
+        
+        handlers.put(Search.class,  SearchHandler.get());
     }
     
     @SuppressWarnings("unchecked")
