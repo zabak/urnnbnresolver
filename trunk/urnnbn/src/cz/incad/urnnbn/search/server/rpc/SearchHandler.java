@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.aplikator.server.Context;
 import org.aplikator.server.persistence.Persister;
+import org.aplikator.server.persistence.PersisterFactory;
 import org.aplikator.server.rpc.CommandHandler;
 
 import cz.incad.urnnbn.search.client.ResultNode;
@@ -17,10 +18,16 @@ import cz.incad.urnnbn.search.client.rpc.SearchResponse;
 
 public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     
+    private static SearchHandler inst = new SearchHandler();
+    
+    public static SearchHandler get(){
+        return inst;
+    }
+    
     private Persister persister;
     
-    public SearchHandler(Persister p){
-        this.persister=p;
+    private SearchHandler(){
+        this.persister = PersisterFactory.getPersister();
     }
     
     
@@ -29,7 +36,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     " from digitalni_reprezentace dr left outer join intelektualni_entita ie on dr.intelektualni_entita = ie.ie_id "+
     " where (dr.urnnbn like ? and dr.aktivni='1') or ie.isbn like ? or ie.issn like ? or ie.ccnb like ? "; 
 
-    //and dr.aktivni=1
+    
     
     public SearchResponse execute(Search command, Context context) {
         Connection conn = null;
@@ -97,6 +104,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     
     
     private static final String selectZverejneno = "select url from zverejneno where digitalni_reprezentace = ?";
+    
     private void addURLS(List<String> loks, Integer id, Connection conn) throws SQLException{
         ResultSet rs = null;
         PreparedStatement st = null;
@@ -117,5 +125,57 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
             }
         }
     }
+    
+    
+    public String findRedirect(String id, String library ) {
+        Connection conn = null;
+        try{
+            conn = persister.getJDBCConnection();
+            PreparedStatement st = conn.prepareStatement(searchQuery);
+            for (int i = 1;i<=4;i++){
+                st.setString(i, id+"%");
+            }
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return findURL(library, rs.getInt("dr_id"),conn);
+            }
+        }catch(Exception ex){
+            System.out.println("Search error: "+ex);
+        }finally{
+            if (conn!= null){
+                try{
+                    conn.close();
+                }catch(SQLException e){
+                    
+                }
+            }
+        }
+        return null;
+    }
+    
+    private String findURL(String library,  Integer id, Connection conn) throws SQLException{
+        ResultSet rs = null;
+        PreparedStatement st = null;
+        try{
+            st = conn.prepareStatement(selectZverejneno);
+            st.setInt(1, id);
+            rs = st.executeQuery();
+            while (rs.next()){
+                String url = rs.getString("url");
+                if (url!= null && url.startsWith(library)){
+                    return url;
+                }
+            }
+        }finally{
+            if (rs != null){
+                rs.close();
+            }
+            if (st != null){
+                st.close();
+            }
+        }
+        return null;
+    }
+
 
 }
