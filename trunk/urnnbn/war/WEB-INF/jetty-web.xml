@@ -31,7 +31,7 @@
     <Arg>
      <New class="com.jolbox.bonecp.BoneCPDataSource">
                  <Set name="driverClass">oracle.jdbc.driver.OracleDriver</Set>
-                 <Set name="jdbcUrl">jdbc:oracle:thin:@//oracv.incad.cz:1521/INCAD.incad.cz</Set>
+                 <Set name="jdbcUrl">jdbc:oracle:thin:@//orabv.incad.cz:1521/INCAD.incad.cz</Set>
                  <Set name="username">dev_nkp_digital</Set>
                  <Set name="password">digital</Set>
      </New>
