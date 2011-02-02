@@ -29,11 +29,11 @@ public class NacistData implements Executable {
     private Structure s;
     private Connection conn;
     private String RDCZPredlohaSelect = "select id, urnnbnflag, urnnbn, idcislo, sigla1, digknihovna, skendjvu, skenjpeg, skengif, skentiff, skenpdf, skentxt, "
-        +"rozsah, rozliseni, barevnahloubka, dostupnost, isbn, issn, ccnb, druhdokumentu, nazev, autor, vydavatel, rokvyd, mistovyd, url , publprac, publdate "
-        +" from Predloha where urnnbnflag = 1"; 
+        +"rozsah, rozliseni, barevnahloubka, dostupnost, isbn, issn, ccnb, druhdokumentu, nazev, autor, vydavatel, rokvyd, mistovyd, url , publprac, publdate, financovano, cislozakazky "
+        +" from Predloha where urnnbnflag = 1 "; 
     
     private String RDCZDigObjSelect = "select id, handler from digobj do left outer join xpreddigobj xdo on do.id = xdo.rDigObjekt where xdo.rPredloha= ?";//TODO pouzit pro dalsi Lokace
-   
+    private String RDCZInitUpdate = "update Predloha set urnnbnflag = 1 where urnnbnflag is null and financovano in ('norskeFondy','iop','VISK7', 'povodne')"; 
     private String RDCZInstSelect = "select value, cz from dlists where classname = 'cz.incad.nkp.digital.InsVlastnik'";
     private String RDCZKnihSelect = "select value, cz from dlists where classname = 'cz.incad.nkp.digital.InsDigitalniKnihovna'";
     

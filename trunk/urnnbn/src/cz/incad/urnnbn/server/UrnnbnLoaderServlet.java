@@ -193,6 +193,9 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
                 .addChild(new TextField(struct.intelektualniEntita.VYDAVATEL).setWidth("30em"))
                 .addChild(new TextField(struct.intelektualniEntita.MISTO_VYDANI).setWidth("30em"))
                 .addChild(new TextField(struct.intelektualniEntita.ROK_VYDANI).setWidth("30em"))
+            ).addChild(new HorizontalPanel()
+                .addChild(new TextField(struct.intelektualniEntita.FINANCOVANO).setWidth("20em"))
+                .addChild(new TextField(struct.intelektualniEntita.CISLO_ZAKAZKY).setWidth("20em"))
             ).addChild(new RepeatedForm(struct.intelektualniEntita.DIGITALNI_REPREZENTACE, digitalniReprezentaceArr))
         );
         return form;

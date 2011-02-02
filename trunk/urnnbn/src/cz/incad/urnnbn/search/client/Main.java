@@ -153,7 +153,7 @@ public class Main implements EntryPoint {
 
         tree = new Tree();
         Widget helpLabel = new HTML("Zadejte hledaný identifikátor v některém z následujících tvarů a klikněte na tlačítko <span style=\"color: black;\">Hledat</span>:<br><br>" 
-                + "<span style=\"color: black;\">URN:NBN</span> (např.:&nbsp;<span>URN:NBN:CZ:ABA010:00000P</span>&nbsp;)<br>" 
+                + "<span style=\"color: black;\">URN:NBN</span> (např.:&nbsp;<span>URN:NBN:CZ:ABA000:0007A7</span>&nbsp;)<br>" 
                 + "<span style=\"color: black;\">čČNB</span> (např.:&nbsp;<span>cnb001753438</span>&nbsp;)<br>" 
                 + "<span style=\"color: black;\">ISBN</span> (např.:&nbsp;<span>80-7051-047-1</span>&nbsp;)<br>"
                 + "<span style=\"color: black;\">ISSN</span> (např.:&nbsp;<span>1802-6265</span>&nbsp;)<br>");
