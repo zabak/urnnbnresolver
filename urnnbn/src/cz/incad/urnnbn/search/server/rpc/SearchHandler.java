@@ -31,12 +31,12 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     }
     
     
-    private static final String searchQuery = "select  ie.ie_id, ie.nazev, ie.autor, ie.isbn, ie.issn, ie.ccnb, ie.rocnik_periodika, ie.vydavatel, ie.rok_Vydani, ie.misto_vydani, "+ 
+    private static final String searchQuery = "select  ie.ie_id, ie.nazev, ie.autor, ie.isbn, ie.issn, ie.ccnb, ie.rocnik_periodika, ie.vydavatel, ie.rok_Vydani, ie.misto_vydani, ie.financovano, ie.cislo_zakazky, "+ 
     " dr.dr_id, dr.urnnbn, dr.cislo_rdcz, dr.format, dr.rozliseni, dr.barevnost, dr.dostupnost "+
     " from digitalni_reprezentace dr left outer join intelektualni_entita ie on dr.intelektualni_entita = ie.ie_id "+
     " where (dr.urnnbn like ? and dr.aktivni='1') or ie.isbn like ? or ie.issn like ? or ie.ccnb like ? "; 
 
-    
+    private static final int MAX_RECORDS = 500;
     
     public SearchResponse execute(Search command, Context context) {
         Connection conn = null;
@@ -48,14 +48,17 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
             }
             ResultSet rs = st.executeQuery();
             List<Tuple> list = new ArrayList<Tuple>();
-            
-            while (rs.next()) {
+            int counter= 0;
+            while (rs.next() && counter++ < MAX_RECORDS) {
                 Tuple tuple = new Tuple();
                 tuple.IE = addLine("Název",rs.getObject("nazev"))+addLine("Autor",rs.getObject("autor"))
                         +addLine("čČNB",rs.getObject("ccnb"))+addLine("ISBN",rs.getObject("isbn"))+addLine("ISSN",rs.getObject("issn"))
                         +addLine("Ročník",rs.getObject("rocnik_periodika"))+addLine("Vydavatel",rs.getObject("vydavatel"))
-                        +addLine("Rok vydání",rs.getObject("rok_vydani"))+addLine("Místo vydání",rs.getObject("misto_vydani"));
-                tuple.DR = addLine("URN:NBN",rs.getObject("urnnbn"))+addLine("Číslo RDCZ",rs.getObject("cislo_rdcz"));
+                        +addLine("Rok vydání",rs.getObject("rok_vydani"))+addLine("Místo vydání",rs.getObject("misto_vydani"))
+                        +addLine("Financováno",rs.getObject("financovano"))+addLine("Číslo zakázky",rs.getObject("cislo_zakazky"));
+                tuple.DR = addLine("URN:NBN",rs.getObject("urnnbn"))+addLine("Číslo RDCZ",rs.getObject("cislo_rdcz"))
+                    +addLine("Formát",rs.getObject("format"))+addLine("Rozlišení",rs.getObject("rozliseni"))
+                    +addLine("Barevnost",rs.getObject("barevnost"))+addLine("Dostupnost",rs.getObject("dostupnost"));
                 addURLS(tuple.LOKS, rs.getInt("dr_id"),conn);
                 list.add(tuple);
             }
@@ -63,7 +66,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
             if (list.size() == 0){
                 return new SearchResponse(new ResultNode("Nebyly nalezeny žádné záznamy"));
             } else {
-                ResultNode result = new ResultNode("Nalezené záznamy ("+list.size()+"):");
+                ResultNode result = (counter >= MAX_RECORDS) ? new ResultNode("Nalezeno více než "+MAX_RECORDS +" záznamů."):new ResultNode("Nalezené záznamy ("+list.size()+")");
                 for (Tuple t: list){
                     ResultNode drNode = new ResultNode(t.DR);
                     for (String lok: t.LOKS){

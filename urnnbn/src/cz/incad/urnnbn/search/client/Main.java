@@ -159,10 +159,10 @@ public class Main implements EntryPoint {
 
         tree = new Tree();
         Widget helpLabel = new HTML("Zadejte hledaný identifikátor v některém z následujících tvarů a klikněte na tlačítko <span style=\"color: black;\">Hledat</span>:<br><br>" 
-                + "<span style=\"color: black;\">URN:NBN</span> (např.:&nbsp;<span>URN:NBN:CZ:ABA000:000T7L</span>&nbsp;)<br>" 
-                + "<span style=\"color: black;\">čČNB</span> (např.:&nbsp;<span>cnb001753438</span>&nbsp;)<br>" 
+                + "<span style=\"color: black;\">URN:NBN</span> (např.:&nbsp;<span>URN:NBN:CZ:ABA000:0010VV</span>&nbsp;)<br>" 
+                + "<span style=\"color: black;\">čČNB</span> (např.:&nbsp;<span>cnb001726942</span>&nbsp;)<br>" 
                 + "<span style=\"color: black;\">ISBN</span> (např.:&nbsp;<span>80-7051-047-1</span>&nbsp;)<br>"
-                + "<span style=\"color: black;\">ISSN</span> (např.:&nbsp;<span>1802-6265</span>&nbsp;)<br>");
+                + "<span style=\"color: black;\">ISSN</span> (např.:&nbsp;<span>1803-4217</span>&nbsp;)<br>");
         
         tree.addItem(helpLabel);
         
@@ -268,7 +268,7 @@ public class Main implements EntryPoint {
                 parseNode(resp.getResults(), root);
                 //root.setState(true,true);
                 //resultsPanel.setWidget(tree);
-                History.newItem(searchBox.getText().trim(), true);
+                History.newItem(searchBox.getText().trim(), false);
             }
         });
     }

@@ -45,8 +45,8 @@ public class ResolverFilter implements Filter {
            String library = ((HttpServletRequest)request).getParameter("library");
            //System.out.println("LIBRARY:"+library);
            if (library == null){
-               ((HttpServletResponse)response).sendRedirect("/Main.jsp#"+path.substring(1));
-               //filterConfig.getServletContext().getRequestDispatcher("/Main.jsp#"+path.substring(1)).forward(request, response);
+               ((HttpServletResponse)response).sendRedirect("Main.jsp#"+path.substring(1));
+               //filterConfig.getServletContext().getRequestDispatcher("Main.jsp#"+path.substring(1)).forward(request, response);
            }else{
                ((HttpServletResponse)response).sendRedirect(searchHandler.findRedirect(path.substring(1), library));
            }

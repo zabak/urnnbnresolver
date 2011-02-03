@@ -181,6 +181,8 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             .addChild(new HorizontalPanel()
                 .addChild(new TextField(struct.intelektualniEntita.CCNB).setWidth("30em"))
                 .addChild(new TextField(struct.intelektualniEntita.ISBN).setWidth("30em"))
+            ).addChild(new HorizontalPanel()
+                .addChild(new TextField(struct.intelektualniEntita.ISSN).setWidth("30em"))
                 .addChild(new TextField(struct.intelektualniEntita.JINY_ID).setWidth("30em"))
             ).addChild(new TextField(struct.intelektualniEntita.NAZEV).setWidth("80em"))
             .addChild(new TextField(struct.intelektualniEntita.DALSI_NAZEV).setWidth("80em"))

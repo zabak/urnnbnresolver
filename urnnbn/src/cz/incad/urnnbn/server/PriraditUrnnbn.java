@@ -33,6 +33,8 @@ public class PriraditUrnnbn implements Executable {
     private static final String RDCZupdateURNNBN = "update predloha set urnnbn = ?, urnnbnflag = 3 where idcislo = ?";
     @Override
     public FunctionResult execute(FunctionParameters parameters,  org.aplikator.server.Context context) {
+        String user = context.getHttpServletRequest().getUserPrincipal()!=null?context.getHttpServletRequest().getUserPrincipal().getName():"anonym";
+        int counter = 0;
         Connection RDCZconn = null;
         try{
             if (persister == null){
@@ -55,21 +57,14 @@ public class PriraditUrnnbn implements Executable {
             RecordDTO currentRecord = parameters.getClientContext().getCurrentRecord();
             if (currentRecord==null){
                 cmd.where(s.digitalniReprezentace.URNNBN.column.is(null));
-                System.out.println("ASSIGN URN NBN - BULK");
             }else{
                 cmd.where(s.digitalniReprezentace.getPrimaryKey().column.is(currentRecord.getPrimaryKey().getId()));
-                System.out.println("ASSIGN URN NBN : "+currentRecord.getPrimaryKey().getId());
             }
-            // Query Records and print output
             DBReader reader = new DBReader();
             try
             {
-                // Open Reader
-                System.out.println("Running Query:");
-                System.out.println(cmd.getSelect());
                 if (reader.open(cmd, conn) == false)
                     throw new RuntimeException(reader.getErrorMessage());
-                // Print output
                 DBRecord record = new DBRecord();
                 while (reader.moveNext())
                 {
@@ -79,7 +74,8 @@ public class PriraditUrnnbn implements Executable {
                     // reader
                     record.setValue(s.digitalniReprezentace.URNNBN.column, URNNBN);
                     record.setValue(s.digitalniReprezentace.PRIDELENO_DNE.column, new Date());
-                    record.setValue(s.digitalniReprezentace.PRIDELENO_KYM.column, "admin");
+                    record.setValue(s.digitalniReprezentace.PRIDELENO_KYM.column, user);
+                    record.setValue(s.digitalniReprezentace.AKTIVNI.column, "1");
                     record.update(conn);
                     conn.commit();
                     RDCZst.setString(1, URNNBN);
@@ -87,17 +83,15 @@ public class PriraditUrnnbn implements Executable {
                     RDCZst.setString(2,cisloRDCZ);
                     int result = RDCZst.executeUpdate();
                     RDCZconn.commit();
+                    counter++;
                 }
-                // Done
-                
-
             } finally
             {
                 // always close Reader
                 reader.close();
             }
            
-            return new FunctionResult("HOTOVO", true);
+            return new FunctionResult("AKTUALIZOVANO ZAZNAMU:"+counter, true);
         }catch(Exception ex){
             return new FunctionResult("ERROR: "+ex.getMessage(), false);
         }finally{
