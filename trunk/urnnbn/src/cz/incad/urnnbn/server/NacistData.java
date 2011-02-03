@@ -63,19 +63,20 @@ public class NacistData implements Executable {
             loadLibrariesMap();
             addNewLibraries(RDCZconn);
             
-            System.out.println("Searching new records in RDCZ");
+            //System.out.println("Searching new records in RDCZ");
             long start = System.currentTimeMillis();
             Statement RDCZst = RDCZconn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet RDCZrs = RDCZst.executeQuery(RDCZPredlohaSelect);
-            System.out.println("Search finished in: "+(System.currentTimeMillis()-start)+"ms");
+            //System.out.println("Search finished in: "+(System.currentTimeMillis()-start)+"ms");
             while(RDCZrs.next()){
-                System.out.print("Count"+(counter++)+":");
+                counter++;
+                //System.out.print("Count"+(counter)+":");
                 importRow(RDCZrs);
                 RDCZrs.updateInt("urnnbnflag", 2);
                 RDCZrs.updateRow();
                 RDCZconn.commit();
             }
-            return new FunctionResult("HOTOVO", true);
+            return new FunctionResult("IMPORTOVANO: "+counter, true);
         }catch(Exception ex){
             return new FunctionResult("ERROR: "+ex.getMessage(), false);
         }finally{
@@ -99,7 +100,7 @@ public class NacistData implements Executable {
     }
     
     private void importRow (ResultSet RDCZrs) throws SQLException{
-        System.out.println("IDCISLO:"+RDCZrs.getString("idcislo")+", NAZEV:"+RDCZrs.getString("nazev"));
+        //System.out.println("IDCISLO:"+RDCZrs.getString("idcislo")+", NAZEV:"+RDCZrs.getString("nazev"));
         DBRecord ie = new DBRecord();
         ie.create(s.intelektualniEntita.getTable(), conn);
         
@@ -114,6 +115,8 @@ public class NacistData implements Executable {
         ie.setValue(s.intelektualniEntita.ROK_VYDANI.column, RDCZrs.getString("rokvyd"));
         ie.setValue(s.intelektualniEntita.MISTO_VYDANI.column, RDCZrs.getString("mistovyd"));
         ie.setValue(s.intelektualniEntita.ROCNIK_PERIODIKA.column, RDCZrs.getString("rozsah"));
+        ie.setValue(s.intelektualniEntita.FINANCOVANO.column, RDCZrs.getString("financovano"));
+        ie.setValue(s.intelektualniEntita.CISLO_ZAKAZKY.column, RDCZrs.getString("cislozakazky"));
         ie.update(conn);
         
         DBRecord dr = new DBRecord();
@@ -225,8 +228,8 @@ public class NacistData implements Executable {
         try
         {
             // Open Reader
-            System.out.println("Running Query:");
-            System.out.println(cmd.getSelect());
+            //System.out.println("Running Query:");
+            //System.out.println(cmd.getSelect());
             if (reader.open(cmd, conn) == false)
                 throw new RuntimeException(reader.getErrorMessage());
             while (reader.moveNext())
@@ -283,8 +286,8 @@ public class NacistData implements Executable {
         try
         {
             // Open Reader
-            System.out.println("Running Query:");
-            System.out.println(cmd.getSelect());
+            //System.out.println("Running Query:");
+            //System.out.println(cmd.getSelect());
             if (reader.open(cmd, conn) == false)
                 throw new RuntimeException(reader.getErrorMessage());
             while (reader.moveNext())
