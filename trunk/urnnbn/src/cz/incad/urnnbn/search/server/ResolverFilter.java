@@ -1,6 +1,7 @@
 package cz.incad.urnnbn.search.server;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -35,7 +36,11 @@ public class ResolverFilter implements Filter {
        if (filterConfig == null)
           return;
        String path = ((HttpServletRequest)request).getServletPath();
-       //System.out.println("REQUEST:"+path);
+       /*System.out.println("REQUEST:"+path);
+       System.out.println("REQUEST CLASS:"+request.getClass());
+       long start = System.currentTimeMillis();
+       Locale locale = ((HttpServletRequest)request).getLocale();
+       System.out.println("LOCALE:"+locale+", time:"+(System.currentTimeMillis()-start));*/
        if (path != null && path.startsWith("/URN:NBN:CZ")){
            String library = ((HttpServletRequest)request).getParameter("library");
            //System.out.println("LIBRARY:"+library);
