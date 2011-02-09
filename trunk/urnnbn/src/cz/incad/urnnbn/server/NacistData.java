@@ -115,8 +115,6 @@ public class NacistData implements Executable {
         ie.setValue(s.intelektualniEntita.ROK_VYDANI.column, RDCZrs.getString("rokvyd"));
         ie.setValue(s.intelektualniEntita.MISTO_VYDANI.column, RDCZrs.getString("mistovyd"));
         ie.setValue(s.intelektualniEntita.ROCNIK_PERIODIKA.column, RDCZrs.getString("rozsah"));
-        ie.setValue(s.intelektualniEntita.FINANCOVANO.column, RDCZrs.getString("financovano"));
-        ie.setValue(s.intelektualniEntita.CISLO_ZAKAZKY.column, RDCZrs.getString("cislozakazky"));
         ie.update(conn);
         
         DBRecord dr = new DBRecord();
@@ -129,6 +127,9 @@ public class NacistData implements Executable {
         dr.setValue(s.digitalniReprezentace.ROZLISENI.column, RDCZrs.getString("rozliseni"));
         dr.setValue(s.digitalniReprezentace.BAREVNOST.column, RDCZrs.getString("barevnahloubka"));
         dr.setValue(s.digitalniReprezentace.DOSTUPNOST.column, RDCZrs.getString("dostupnost"));
+        ie.setValue(s.digitalniReprezentace.FINANCOVANO.column, RDCZrs.getString("financovano"));
+        ie.setValue(s.digitalniReprezentace.CISLO_ZAKAZKY.column, RDCZrs.getString("cislozakazky"));
+        
         dr.update(conn);
         
         String URL = RDCZrs.getString("url");
