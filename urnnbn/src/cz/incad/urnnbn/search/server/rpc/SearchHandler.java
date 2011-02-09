@@ -31,8 +31,8 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     }
     
     
-    private static final String searchQuery = "select  ie.ie_id, ie.nazev, ie.autor, ie.isbn, ie.issn, ie.ccnb, ie.rocnik_periodika, ie.vydavatel, ie.rok_Vydani, ie.misto_vydani, ie.financovano, ie.cislo_zakazky, "+ 
-    " dr.dr_id, dr.urnnbn, dr.cislo_rdcz, dr.format, dr.rozliseni, dr.barevnost, dr.dostupnost "+
+    private static final String searchQuery = "select  ie.ie_id, ie.nazev, ie.autor, ie.isbn, ie.issn, ie.ccnb, ie.rocnik_periodika, ie.vydavatel, ie.rok_Vydani, ie.misto_vydani,  "+ 
+    " dr.dr_id, dr.urnnbn, dr.cislo_rdcz, dr.format, dr.rozliseni, dr.barevnost, dr.dostupnost, dr.financovano, dr.cislo_zakazky "+
     " from digitalni_reprezentace dr left outer join intelektualni_entita ie on dr.intelektualni_entita = ie.ie_id "+
     " where (dr.urnnbn like ? and dr.aktivni='1') or ie.isbn like ? or ie.issn like ? or ie.ccnb like ? "; 
 
@@ -54,9 +54,9 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
                 tuple.IE = addLine("Název",rs.getObject("nazev"))+addLine("Autor",rs.getObject("autor"))
                         +addLine("čČNB",rs.getObject("ccnb"))+addLine("ISBN",rs.getObject("isbn"))+addLine("ISSN",rs.getObject("issn"))
                         +addLine("Ročník",rs.getObject("rocnik_periodika"))+addLine("Vydavatel",rs.getObject("vydavatel"))
-                        +addLine("Rok vydání",rs.getObject("rok_vydani"))+addLine("Místo vydání",rs.getObject("misto_vydani"))
-                        +addLine("Financováno",rs.getObject("financovano"))+addLine("Číslo zakázky",rs.getObject("cislo_zakazky"));
+                        +addLine("Rok vydání",rs.getObject("rok_vydani"))+addLine("Místo vydání",rs.getObject("misto_vydani"));
                 tuple.DR = addLine("URN:NBN",rs.getObject("urnnbn"))+addLine("Číslo RDCZ",rs.getObject("cislo_rdcz"))
+                    +addLine("Financováno",rs.getObject("financovano"))+addLine("Číslo zakázky",rs.getObject("cislo_zakazky"))
                     +addLine("Formát",rs.getObject("format"))+addLine("Rozlišení",rs.getObject("rozliseni"))
                     +addLine("Barevnost",rs.getObject("barevnost"))+addLine("Dostupnost",rs.getObject("dostupnost"));
                 addURLS(tuple.LOKS, rs.getInt("dr_id"),conn);

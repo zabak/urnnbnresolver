@@ -27,8 +27,6 @@ public class Structure extends Application {
         public final Property MISTO_VYDANI;
         public final Property ROCNIK_PERIODIKA;
         public final Property CISLO_PERIODIKA;
-        public final Property FINANCOVANO;
-        public final Property CISLO_ZAKAZKY;
         public Collection DIGITALNI_REPREZENTACE;
 
         public IntelektualniEntita() {
@@ -48,8 +46,6 @@ public class Structure extends Application {
             ROCNIK_PERIODIKA= addProperty("ROCNIK_PERIODIKA", PropertyType.STRING, 200, false);
             CISLO_PERIODIKA= addProperty("CISLO_PERIODIKA", PropertyType.STRING, 200, false);
             MISTO_VYDANI= addProperty("MISTO_VYDANI", PropertyType.STRING, 255, false);
-            FINANCOVANO= addProperty("FINANCOVANO", PropertyType.STRING, 255, false);
-            CISLO_ZAKAZKY= addProperty("CISLO_ZAKAZKY", PropertyType.STRING, 255, false);
             
             addIndex("CCNB_IDX", false, CCNB);
             addIndex("ISBN_IDX", false, ISBN);
@@ -74,6 +70,9 @@ public class Structure extends Application {
         public final Property ROZLISENI;
         public final Property BAREVNOST;
         public final Property DOSTUPNOST;
+        public final Property FINANCOVANO;
+        public final Property CISLO_ZAKAZKY;
+        
         public Reference INTELEKTUALNI_ENTITA;
         public Collection ZVEREJNENO;
         public Reference INSTITUCE;
@@ -90,6 +89,9 @@ public class Structure extends Application {
             ROZLISENI= addProperty("ROZLISENI", PropertyType.STRING, 200, false);
             BAREVNOST= addProperty("BAREVNOST", PropertyType.STRING, 200, false);
             DOSTUPNOST= addProperty("DOSTUPNOST", PropertyType.STRING, 200, false);
+            FINANCOVANO= addProperty("FINANCOVANO", PropertyType.STRING, 255, false);
+            CISLO_ZAKAZKY= addProperty("CISLO_ZAKAZKY", PropertyType.STRING, 255, false);
+            
            
             INSTITUCE = addReference(instituce, "INSTITUCE");
             
