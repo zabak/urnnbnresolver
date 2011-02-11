@@ -70,11 +70,15 @@ public class NacistData implements Executable {
             //System.out.println("Search finished in: "+(System.currentTimeMillis()-start)+"ms");
             while(RDCZrs.next()){
                 counter++;
-                //System.out.print("Count"+(counter)+":");
-                importRow(RDCZrs);
-                RDCZrs.updateInt("urnnbnflag", 2);
-                RDCZrs.updateRow();
-                RDCZconn.commit();
+                try{
+                    //System.out.print("Count"+(counter)+":");
+                    importRow(RDCZrs);
+                    RDCZrs.updateInt("urnnbnflag", 2);
+                    RDCZrs.updateRow();
+                    RDCZconn.commit();
+                }catch(Exception exx){
+                    System.out.println(exx); 
+                }
             }
             return new FunctionResult("IMPORTOVANO: "+counter, true);
         }catch(Exception ex){
@@ -116,28 +120,30 @@ public class NacistData implements Executable {
         ie.setValue(s.intelektualniEntita.MISTO_VYDANI.column, RDCZrs.getString("mistovyd"));
         ie.setValue(s.intelektualniEntita.ROCNIK_PERIODIKA.column, RDCZrs.getString("rozsah"));
         ie.update(conn);
+        int ie_id = ie.getInt(s.intelektualniEntita.getPrimaryKey().column);
+        int institution_id = institutions.get(RDCZrs.getString("sigla1"));
         
         DBRecord dr = new DBRecord();
         dr.create(s.digitalniReprezentace.getTable(), conn);
-        dr.setValue(s.digitalniReprezentace.INTELEKTUALNI_ENTITA.column, ie.getValue(s.intelektualniEntita.getPrimaryKey().column));
-        
+        dr.setValue(s.digitalniReprezentace.INTELEKTUALNI_ENTITA.column, ie_id);
         dr.setValue(s.digitalniReprezentace.CISLO_RDCZ.column, RDCZrs.getString("idcislo"));
-        dr.setValue(s.digitalniReprezentace.INSTITUCE.column, institutions.get(RDCZrs.getString("sigla1")));
+        dr.setValue(s.digitalniReprezentace.INSTITUCE.column, institution_id);
         dr.setValue(s.digitalniReprezentace.FORMAT.column, convertFormat(RDCZrs));
         dr.setValue(s.digitalniReprezentace.ROZLISENI.column, RDCZrs.getString("rozliseni"));
         dr.setValue(s.digitalniReprezentace.BAREVNOST.column, RDCZrs.getString("barevnahloubka"));
         dr.setValue(s.digitalniReprezentace.DOSTUPNOST.column, RDCZrs.getString("dostupnost"));
-        ie.setValue(s.digitalniReprezentace.FINANCOVANO.column, RDCZrs.getString("financovano"));
-        ie.setValue(s.digitalniReprezentace.CISLO_ZAKAZKY.column, RDCZrs.getString("cislozakazky"));
-        
+        dr.setValue(s.digitalniReprezentace.FINANCOVANO.column, RDCZrs.getString("financovano"));
+        dr.setValue(s.digitalniReprezentace.CISLO_ZAKAZKY.column, RDCZrs.getString("cislozakazky"));
         dr.update(conn);
+        int dr_id = dr.getInt(s.digitalniReprezentace.getPrimaryKey().column);
+        int library_id = libraries.get(RDCZrs.getString("digknihovna"));
         
         String URL = RDCZrs.getString("url");
         if(URL!=null && !"".equals(URL)){
             DBRecord zv = new DBRecord();
             zv.create(s.zverejneno.getTable(), conn);
-            zv.setValue(s.zverejneno.DIGITALNI_REPREZENTACE.column, dr.getValue(s.digitalniReprezentace.getPrimaryKey().column));
-            zv.setValue(s.zverejneno.DIGITALNI_KNIHOVNA.column, libraries.get(RDCZrs.getString("digknihovna")));
+            zv.setValue(s.zverejneno.DIGITALNI_REPREZENTACE.column,dr_id );
+            zv.setValue(s.zverejneno.DIGITALNI_KNIHOVNA.column, library_id);
             zv.setValue(s.zverejneno.URL.column, RDCZrs.getString("url"));
             zv.setValue(s.zverejneno.ZVEREJNENO_KYM.column, RDCZrs.getString("publprac"));
             zv.setValue(s.zverejneno.ZVEREJNENO_DNE.column, RDCZrs.getString("publdate"));
