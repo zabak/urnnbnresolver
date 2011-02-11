@@ -55,3 +55,7 @@ dale jsme se domluvili na tom, ze do tabulky digitalni reprezentace pridame pole
 - přesměrování na resolver.nkp.cz
 
 
+--------------------------------------
+11.2 dodelano 
+
+Vyhledávání funguje tak, že se hledají všechny identifikátory, které začínají zadaným textem, case sensitive. Změním to na case insensitive a hledání výskytu zadaného textu na libovolném místě identifikátorů (také zítra). Uvidíme, jak se to osvědčí. Na stávajících 10 000 záznamech se to asi neprojeví, ale až tam bude víc dat, bude takové hledání uvnitř textu pomalé, protože nemůže použít index. A předpokládám, že si někteří uživatelé budou stěžovat, že při zadání příliš krátkého výrazu to nachází všechno možné, jen ne to, co měli na mysli ... 
