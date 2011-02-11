@@ -34,7 +34,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     private static final String searchQuery = "select  ie.ie_id, ie.nazev, ie.autor, ie.isbn, ie.issn, ie.ccnb, ie.rocnik_periodika, ie.vydavatel, ie.rok_Vydani, ie.misto_vydani,  "+ 
     " dr.dr_id, dr.urnnbn, dr.cislo_rdcz, dr.format, dr.rozliseni, dr.barevnost, dr.dostupnost, dr.financovano, dr.cislo_zakazky "+
     " from digitalni_reprezentace dr left outer join intelektualni_entita ie on dr.intelektualni_entita = ie.ie_id "+
-    " where (upper(dr.urnnbn) like upper(?) and dr.aktivni='1') or upper(ie.isbn) like upper(?) or upper(ie.issn) like upper(?) or upper(ie.ccnb) like upper(?) ;"; 
+    " where (upper(dr.urnnbn) like upper(?) and dr.aktivni='1') or upper(ie.isbn) like upper(?) or upper(ie.issn) like upper(?) or upper(ie.ccnb) like upper(?) "; 
 
     private static final int MAX_RECORDS = 500;
     
