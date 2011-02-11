@@ -26,9 +26,11 @@ public class StatisticService {
         try{
             conn = persister.getJDBCConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select count(*) from "+tableName+";");
+            String qs = "select count(*) from "+tableName;
+            ResultSet rs = st.executeQuery(qs);
             if (rs.next()) {
-                return rs.getInt(1);
+                int retval = rs.getInt(1);
+                return retval;
             }
         }catch(Exception ex){
             System.out.println("Stats error: "+ex);
