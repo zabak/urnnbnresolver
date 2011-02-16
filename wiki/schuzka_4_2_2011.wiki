@@ -55,6 +55,15 @@ dale jsme se domluvili na tom, ze do tabulky digitalni reprezentace pridame pole
 - přesměrování na resolver.nkp.cz
 
 
+--------------------------------
+16.2. doplněno vyhledávání
+
+Dobrý den, je to skoro tak, jen za tím ?library=   musí být (libovolně dlouhý) začátek úplného URL, tedy včetně http://
+
+Takže bude fungovat: http://sluzby.incad.cz/urnnbn/URN:NBN:CZ:ABA000:00171U?library=http://kramerius.nkp.cz
+
+
+
 --------------------------------------
 11.2 dodelano 
 
