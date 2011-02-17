@@ -69,6 +69,9 @@ public class PriraditUrnnbn implements Executable {
                 while (reader.moveNext())
                 {
                     String URNNBN = reader.getString(s.instituce.PREFIX.column) + getUrnnbn(reader.getInt(s.digitalniReprezentace.getPrimaryKey().column));
+                    if (URNNBN != null){
+                        URNNBN = URNNBN.toLowerCase();
+                    }
                     // Init updateable record
                     reader.initRecord(s.digitalniReprezentace.getTable(), record);
                     // reader
