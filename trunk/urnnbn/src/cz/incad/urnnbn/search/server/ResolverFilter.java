@@ -41,7 +41,7 @@ public class ResolverFilter implements Filter {
        long start = System.currentTimeMillis();
        Locale locale = ((HttpServletRequest)request).getLocale();
        System.out.println("LOCALE:"+locale+", time:"+(System.currentTimeMillis()-start));*/
-       if (path != null && path.startsWith("/URN:NBN:CZ")){
+       if (path != null && path.toUpperCase().startsWith("/URN:NBN:CZ")){
            String library = ((HttpServletRequest)request).getParameter("library");
            //System.out.println("LIBRARY:"+library);
            if (library == null){
