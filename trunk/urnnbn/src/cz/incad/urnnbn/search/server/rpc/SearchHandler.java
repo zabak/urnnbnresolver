@@ -136,7 +136,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
             conn = persister.getJDBCConnection();
             PreparedStatement st = conn.prepareStatement(searchQuery);
             for (int i = 1;i<=4;i++){
-                st.setString(i, id+"%");
+                st.setString(i,"%"+ id+"%");
             }
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -157,6 +157,8 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     }
     
     private String findURL(String library,  Integer id, Connection conn) throws SQLException{
+        if (library == null) return null;
+        library = library.toUpperCase();
         ResultSet rs = null;
         PreparedStatement st = null;
         try{
@@ -164,8 +166,8 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
             st.setInt(1, id);
             rs = st.executeQuery();
             while (rs.next()){
-                String url = rs.getString("url");
-                if (url!= null && url.startsWith(library)){
+                String url = rs.getString("url").toUpperCase();
+                if (url!= null && url.contains(library)){
                     return url;
                 }
             }
