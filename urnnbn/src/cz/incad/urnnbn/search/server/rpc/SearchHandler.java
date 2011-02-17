@@ -166,8 +166,8 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
             st.setInt(1, id);
             rs = st.executeQuery();
             while (rs.next()){
-                String url = rs.getString("url").toUpperCase();
-                if (url!= null && url.contains(library)){
+                String url = rs.getString("url");
+                if (url!= null && url.toUpperCase().contains(library)){
                     return url;
                 }
             }
