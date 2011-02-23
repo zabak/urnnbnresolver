@@ -6,11 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 import org.aplikator.server.Context;
 import org.aplikator.server.persistence.Persister;
 import org.aplikator.server.persistence.PersisterFactory;
 import org.aplikator.server.rpc.CommandHandler;
+import org.aplikator.server.util.UTF8ClassLoader;
 
 import cz.incad.urnnbn.search.client.ResultNode;
 import cz.incad.urnnbn.search.client.rpc.Search;
@@ -30,6 +34,27 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
         this.persister = PersisterFactory.getPersister();
     }
     
+    private UTF8ClassLoader UTF8cl = new UTF8ClassLoader();
+
+    private String getLocalizedString(String key, String loc) {
+        Locale locale = null;
+        if ("en".equals(loc)){
+            locale = Locale.ENGLISH;
+        }else{
+            locale = Locale.ROOT;
+        }
+        ResourceBundle rb = ResourceBundle.getBundle("resolver", locale, UTF8cl);
+        if (rb != null) {
+            try {
+                return rb.getString(key);
+            } catch (MissingResourceException ex) {
+                return key;
+            }
+        }
+
+        return key;
+    }
+
     
     private static final String searchQuery = "select  ie.ie_id, ie.nazev, ie.autor, ie.isbn, ie.issn, ie.ccnb, ie.rocnik_periodika, ie.vydavatel, ie.rok_Vydani, ie.misto_vydani,  "+ 
     " dr.dr_id, dr.urnnbn, dr.cislo_rdcz, dr.format, dr.rozliseni, dr.barevnost, dr.dostupnost, dr.financovano, dr.cislo_zakazky "+
@@ -40,62 +65,79 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     
     public SearchResponse execute(Search command, Context context) {
         Connection conn = null;
-        try{
-            conn = persister.getJDBCConnection();
-            PreparedStatement st = conn.prepareStatement(searchQuery);
-            for (int i = 1;i<=4;i++){
-                st.setString(i, "%"+command.getSearchId()+"%");
-            }
-            ResultSet rs = st.executeQuery();
-            List<Tuple> list = new ArrayList<Tuple>();
-            int counter= 0;
-            while (rs.next() && counter++ < MAX_RECORDS) {
-                Tuple tuple = new Tuple();
-                tuple.IE = addLine("Název",rs.getObject("nazev"))+addLine("Autor",rs.getObject("autor"))
-                        +addLine("čČNB",rs.getObject("ccnb"))+addLine("ISBN",rs.getObject("isbn"))+addLine("ISSN",rs.getObject("issn"))
-                        +addLine("Ročník",rs.getObject("rocnik_periodika"))+addLine("Vydavatel",rs.getObject("vydavatel"))
-                        +addLine("Rok vydání",rs.getObject("rok_vydani"))+addLine("Místo vydání",rs.getObject("misto_vydani"));
-                tuple.DR = addLine("URN:NBN",rs.getObject("urnnbn"))+addLine("Číslo RDCZ",rs.getObject("cislo_rdcz"))
-                    +addLine("Financováno",rs.getObject("financovano"))+addLine("Číslo zakázky",rs.getObject("cislo_zakazky"))
-                    +addLine("Formát",rs.getObject("format"))+addLine("Rozlišení",rs.getObject("rozliseni"))
-                    +addLine("Barevnost",rs.getObject("barevnost"))+addLine("Dostupnost",rs.getObject("dostupnost"));
-                addURLS(tuple.LOKS, rs.getInt("dr_id"),conn);
-                list.add(tuple);
-            }
-            
-            if (list.size() == 0){
-                return new SearchResponse(new ResultNode("Nebyly nalezeny žádné záznamy"));
-            } else {
-                ResultNode result = (counter >= MAX_RECORDS) ? new ResultNode("Nalezeno více než "+MAX_RECORDS +" záznamů."):new ResultNode("Nalezené záznamy ("+list.size()+")");
-                for (Tuple t: list){
-                    ResultNode drNode = new ResultNode(t.DR);
-                    for (String lok: t.LOKS){
-                        drNode.addChild(new ResultNode(lok));
-                    }
-                    result.addChild(new ResultNode(t.IE).addChild(drNode));
+        if (command.getSearchId()!= null && !"".equals(command.getSearchId())){
+            try{
+                conn = persister.getJDBCConnection();
+                PreparedStatement st = conn.prepareStatement(searchQuery);
+                for (int i = 1;i<=4;i++){
+                    st.setString(i, "%"+command.getSearchId()+"%");
                 }
-                return new SearchResponse(result);
-            }
-        }catch(Exception ex){
-            System.out.println("Search error: "+ex);
-        }finally{
-            if (conn!= null){
-                try{
-                    conn.close();
-                }catch(SQLException e){
-                    
+                ResultSet rs = st.executeQuery();
+                List<Tuple> list = new ArrayList<Tuple>();
+                int counter= 0;
+                while (rs.next() && counter++ < MAX_RECORDS) {
+                    Tuple tuple = new Tuple();
+                    tuple.IE = addLine(getLocalizedString("nazev",command.getLocale()),rs.getObject("nazev"))+addLine(getLocalizedString("autor",command.getLocale()),rs.getObject("autor"))
+                            +addLine(getLocalizedString("ccnb",command.getLocale()),rs.getObject("ccnb"))+addLine(getLocalizedString("ISBN",command.getLocale()),rs.getObject("isbn"))
+                            +addLine(getLocalizedString("ISSN",command.getLocale()),rs.getObject("issn"))
+                            +addLine(getLocalizedString("rocnik",command.getLocale()),rs.getObject("rocnik_periodika"))+addLine(getLocalizedString("vydavatel",command.getLocale()),rs.getObject("vydavatel"))
+                            +addLine(getLocalizedString("rokVydani",command.getLocale()),rs.getObject("rok_vydani"))+addLine(getLocalizedString("mistoVydani",command.getLocale()),rs.getObject("misto_vydani"));
+                    tuple.DR = addLine(getLocalizedString("urnnbn",command.getLocale()),rs.getObject("urnnbn"))+addLine(getLocalizedString("rdcz",command.getLocale()),rs.getObject("cislo_rdcz"))
+                        +addLine(getLocalizedString("financovano",command.getLocale()),rs.getObject("financovano"))+addLine(getLocalizedString("cisloZakazky",command.getLocale()),rs.getObject("cislo_zakazky"))
+                        +addLine(getLocalizedString("format",command.getLocale()),rs.getObject("format"))+addLine(getLocalizedString("rozliseni",command.getLocale()),rs.getObject("rozliseni"))
+                        +addLine(getLocalizedString("barevnost",command.getLocale()),rs.getObject("barevnost"))+addLine(getLocalizedString("dostupnost",command.getLocale()),rs.getObject("dostupnost"));
+                    addURLS(tuple.LOKS, rs.getInt("dr_id"),conn, command.getLocale());
+                    list.add(tuple);
+                }
+                
+                if (list.size() == 0){
+                    return new SearchResponse(new ResultNode(getLocalizedString("nenalezeno",command.getLocale())));
+                } else {
+                    ResultNode result = (counter >= MAX_RECORDS) ? new ResultNode(getLocalizedString("overflow",command.getLocale())+" ( > "+MAX_RECORDS +" )"):new ResultNode(getLocalizedString("nalezeno",command.getLocale())+" ( "+list.size()+" )");
+                    for (Tuple t: list){
+                        ResultNode drNode = new ResultNode(t.DR);
+                        for (String lok: t.LOKS){
+                            drNode.addChild(new ResultNode(lok));
+                        }
+                        result.addChild(new ResultNode(t.IE).addChild(drNode));
+                    }
+                    return new SearchResponse(result);
+                }
+            }catch(Exception ex){
+                System.out.println("Search error: "+ex);
+            }finally{
+                if (conn!= null){
+                    try{
+                        conn.close();
+                    }catch(SQLException e){
+                        
+                    }
                 }
             }
         }
-        return new SearchResponse(new ResultNode("Nebyly nalezeny žádné záznamy"));
-        //return new SearchResponse(new ResultNode("<span style='font-size:40px;'>"+command.getSearchId()+"</span>").addChild(new ResultNode("potomek")).addChild(new ResultNode("<a href='http://www.amaio.com' target='_blank'>http://www.amaio.com</a>").addChild(new ResultNode("<b>pod</b>potomek<br>dvouřádkový")).addChild(new ResultNode("druhý<b>pod</b>potomek<br>dvouřádkový"))));
+        return new SearchResponse(new ResultNode(getLocalizedString("nenalezeno",command.getLocale())));
     }
     
     private String addLine(String label, Object value){
         if (value == null){
             return "";
         }else{
-            return label+": <span style=\"color: black;\">"+value+"</span><br>";
+            return label+": <span style=\"color: black;\">"+breakLine(value.toString())+"</span><br>";
+        }
+    }
+    
+    private static final int LINE_LENGTH = 160; 
+    
+    private String breakLine(String value){
+        if (value == null) return null;
+        if (value.length()>LINE_LENGTH){
+            int spacePosition = value.indexOf(" ", LINE_LENGTH);
+            if (spacePosition <= 0){
+                spacePosition = LINE_LENGTH;
+            }
+            return value.substring(0, spacePosition)+"<br>&nbsp;&nbsp;&nbsp;"+breakLine(value.substring(spacePosition+1));
+        }else{
+            return value;
         }
     }
     
@@ -108,7 +150,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
     
     private static final String selectZverejneno = "select url from zverejneno where digitalni_reprezentace = ?";
     
-    private void addURLS(List<String> loks, Integer id, Connection conn) throws SQLException{
+    private void addURLS(List<String> loks, Integer id, Connection conn, String loc) throws SQLException{
         ResultSet rs = null;
         PreparedStatement st = null;
         try{
@@ -117,7 +159,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
             rs = st.executeQuery();
             while (rs.next()){
                 String url = rs.getString("url");
-                loks.add( addLine("URL", "<a href='"+url+"' target='_blank'>"+url+"</a>"));
+                loks.add( addLine(getLocalizedString("URL",loc), "<a href='"+url+"' target='_blank'>"+url+"</a>"));
             }
         }finally{
             if (rs != null){

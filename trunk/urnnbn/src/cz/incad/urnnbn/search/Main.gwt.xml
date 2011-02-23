@@ -8,5 +8,5 @@
     <public path='client'>
         <include name='logo_books.png'/>
     </public>
-    
+    <extend-property name="locale" values="en"/>
 </module>
