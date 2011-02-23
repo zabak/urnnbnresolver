@@ -1,5 +1,5 @@
 
-@external body, table, td, a;
+@external body, table, td, a, gwt-Frame, iframe;
 
 body, table td{
     font-family:verdana,arial,helvetica,sans-serif;
@@ -22,6 +22,7 @@ a:hover{
 .languageSwitch{
     margin-bottom: 15px;
     margin-right: 15px;
+    display: block;
 }
 
 .headerTitle{
@@ -68,10 +69,18 @@ a:hover{
 .mainPanel{
     color: #666;
     font-size: 12px;
-    padding: 2px;
+    padding: 10px;
     
     
    
+}
+
+.gwt-Frame{
+    border: none;    
+}
+
+iframe{
+    border:none;
 }
 
 .footerPanel{
