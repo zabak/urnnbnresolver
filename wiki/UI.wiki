@@ -1,0 +1,5 @@
+#Popis uživatelského rozhraní pro vyhledávání URN:NBN
+
+= Uživatelské rozhraní =
+
+http://urnnbnresolver.googlecode.com/svn/wiki/SearchGUI.jpg
