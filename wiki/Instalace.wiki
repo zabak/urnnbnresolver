@@ -3,14 +3,14 @@
 = Systémové požadavky = 
 
   * JDK 6
-  * J2EE Servlet kontejner - obvykle Apache Tomcat 6
+  * J2EE aplikační server (servlet kontejner) - obvykle Apache Tomcat 6
   * přístup k databázi RD.CZ
-  * databáze URNNBN - 
+  * databáze URNNBN - je podporován Oracle 9 nebo PostgreSQL 8.4 a vyšší
   
 
 = Sestavení =
 
-Aplikace je distribuována jako standardní soubor war, který je možno stáhnout ze sekce Downloads. War je také možno sestavit přímo ze drojového kódu v repozitory SVN pomocí nástroje Maven příkazem mvn install. Většina potřebných závislostí je běžně přístupná ve veřejných maven repositories, s výjimkou jdbc ovladače Oracle, který je možno získat na stránkách technet.oracle.com, a jádra administrátorské aplikace, které je k dispozici na stránkách projektu [http://code.google.com/p/aplikator Aplikator]. Obě tyto závislosti je třeba nainstalovat do lokálního úložiště mavenu.
+Aplikace je distribuována jako standardní soubor war, který je možno stáhnout ze sekce Downloads. War je také možno sestavit přímo ze zdrojového kódu v repository SVN pomocí nástroje Maven příkazem `mvn install`. Většina potřebných závislostí je běžně přístupná ve veřejných úložištích maven, s výjimkou jdbc ovladače Oracle, který je možno získat na stránkách `technet.oracle.com`, a jádra administrátorské aplikace, které je k dispozici na stránkách projektu [http://code.google.com/p/aplikator Aplikator]. Obě tyto závislosti je třeba nainstalovat do lokálního úložiště mavenu.
 
 = Instalace=
 
