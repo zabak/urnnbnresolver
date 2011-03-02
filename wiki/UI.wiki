@@ -2,6 +2,8 @@
 
 = Uživatelské rozhraní =
 
+K vyhledávání v registru resolveru slouží stránka s následujícími ovládacími prvky:
+
 http://urnnbnresolver.googlecode.com/svn/wiki/SearchGUI.jpg
 
   # Logo - návrat na úvodní stránku s nápovědou
@@ -11,7 +13,6 @@ http://urnnbnresolver.googlecode.com/svn/wiki/SearchGUI.jpg
   # Výsledky vyhledávání nebo nápověda
   # Vstup do administrátorské aplikace (vyžaduje uživatelský účet, otevírá se v samostatném okně)
 
-==Vyhledávání==
 
 Aplikace umožňuje vyhledávat digitální dokumenty primárně podle identifikátoru URN:NBN, dále podle identifikátoru čČNB (číslo české národní bibliografie) a čísel ISSN a ISBN.
 
