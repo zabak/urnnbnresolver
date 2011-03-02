@@ -35,7 +35,7 @@ Dále je třeba definovat následující datasource v context.xml (samozřejmě 
 
 V databázi URNNBN je třeba vytvořit tabulky schématu urnnbn spuštěním servletu na adrese `.../urnnbn/ddl?update=true` . Parametr `update` určuje, zda se příslušný DDL skript spustí (true) nebo jestli se pouze vypíše do odpovědi servletu (false).
 
-Uživatelská nápověda, zobrazená v iframe uprostřed úvodní stránky vyhledávací aplikace resolveru, je samostatný website, přístupný na adrese `/urnnbnhelp` na stejném serveru jako aplikace urnnbn. Obsah těchto stránek je zcela nezávislý a není součástí distribuce `urnnbn.war`.
+Uživatelská nápověda, zobrazená v iframe uprostřed úvodní stránky vyhledávací aplikace resolveru, je samostatný website, přístupný na adrese `/urnnbnhelp` (česká verze) nebo `/urnnbnhelp/en` (anglická verze) na stejném serveru jako aplikace urnnbn. Obsah těchto stránek je zcela nezávislý a není součástí distribuce `urnnbn.war`.
 
 
 
