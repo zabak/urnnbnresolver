@@ -5,3 +5,5 @@
 [Administrace Administrace]
 
 [Instalace]
+
+[UpravaDatoveStruktury Datová struktura]
