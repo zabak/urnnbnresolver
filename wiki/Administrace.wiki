@@ -1,3 +1,8 @@
 #summary Popis administrátorského GUI
 
 = Administrace =
+
+http://urnnbnresolver.googlecode.com/svn/wiki/AdminGUITable.jpg
+
+
+http://urnnbnresolver.googlecode.com/svn/wiki/AdminGUIForm.jpg
