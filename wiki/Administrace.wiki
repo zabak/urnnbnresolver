@@ -1,0 +1,3 @@
+#summary Popis administrátorského GUI
+
+= Administrace =
