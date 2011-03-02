@@ -18,13 +18,13 @@ Aplikace umožňuje vyhledávat digitální dokumenty primárně podle identifik
 
 Aplikace vyhledává podle jakéhokoliv zadaného řetězce. Počet zobrazených nalezených dokumentů je omezen na 500. K přesnému vyhledání konkrétního dokumentu je nutné zadat identifikátor v jeho úplném znění podle příkladů níže uvedených..
 
-  *URN:NBN* (např.: urn:nbn:cz:aba000:00003p)
+  URN:NBN (např.: urn:nbn:cz:aba000:00003p)
 
-  *čČNB* (např.: cnb001726942)
+  čČNB (např.: cnb001726942)
 
-  *ISBN* (např.: 80-7051-047-1)
+  ISBN (např.: 80-7051-047-1)
 
-  *ISSN* (např.: 1803-4217)
+  ISSN (např.: 1803-4217)
 
 Resolver je zprostředkující služba, která nezajišťuje zpřístupňování dokumentů.
 Resolver pouze poskytuje uživateli URL odkazy na dokumenty v digitálních knihovnách, které jsou odpovědné za jejich zpřístupňování.
