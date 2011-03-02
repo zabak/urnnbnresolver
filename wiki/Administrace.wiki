@@ -2,6 +2,8 @@
 
 = Administrace =
 
+Kliknutím na odkaz Administrace v levém dolním rohu vyhledávací obrazovky resolveru otevřete v novém okně administrátorskou aplikaci pro správu záznamů v resolveru. Pro přístup do aplikace se je třeba přihlásit jako uživatel s rolí `urnnbn`. 
+
 http://urnnbnresolver.googlecode.com/svn/wiki/AdminGUITable.jpg
 
 
