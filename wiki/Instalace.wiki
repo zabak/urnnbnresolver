@@ -1,0 +1,9 @@
+#summary Sestavení, instalace a konfigurace
+
+= Sestavení =
+
+= Instalace=
+
+= Konfigurace =
+
+== Správa uživatelských účtů ==
