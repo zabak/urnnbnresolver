@@ -6,5 +6,14 @@ Kliknutím na odkaz Administrace v levém dolním rohu vyhledávací obrazovky r
 
 http://urnnbnresolver.googlecode.com/svn/wiki/AdminGUITable.jpg
 
+  # Přepínání tabulek. Digitální knihovna a Instituce jsou číselníky, používané v základních tabulkách Intelektuálních entit a Digitálních reprezentací.
+  # Spouštění dávkových funkcí. 
+    * `Načíst data` - načte všechny záznamy z tabulky Predloha v databázi RD.CZ, které mají ve sloupci Mainflag hodnotu 1. Pro každý takový záznam jsou vytvořeny odpovídající záznamy v tabulkách Intelektuální Entita, Digitální reprezentace a Zveřejněno. V původním záznamu v RD.CZ je hodnota ve sloupci Mainflag změněna na 2.
+    * `Přiřadit URNNBN` - u všech záznamů v tabulce Digitální reprezentace, které mají prázdnou hodnotu ve sloupci URNNBN, je tato hodnota vygenerována a záznam je označen jako Aktivní.
+  #  Stránkování v tabulce - Ikonky znamenají (zleva) : první stránka, předchozí stránka, následující stránka, poslední stránka
+  # Operace s vybraným záznamem - kliknutím na příslušný záznam jej v tabulce označíte (pokud je třeba) a vyberte ikonku požadované operace (zleva): nový záznam, editace záznamu, smazání záznamu, kopie záznamu, znovunačtení tabulky 
+  # Vyhledávání - záznamy v tabulce je možno setřídit kliknutím na záhlaví příslušného sloupce (opakovaným kliknutím se změní směr třídění). Ve sloupci, podle kterého je setříděno, je pak možno pomocí tohoto pole vyhledávat. Zadáním textu a kliknutím na ikonku zobrazíte záznamy počínající záznamem, který odpovídá zadanému textu.
+  
+Kliknutím na tlačítko editace (nebo dvojklikem na požadovaném záznamu) je vybraný záznam zobrazen v režimu formuláře:
 
 http://urnnbnresolver.googlecode.com/svn/wiki/AdminGUIForm.jpg
