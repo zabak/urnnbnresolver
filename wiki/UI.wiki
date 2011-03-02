@@ -1,4 +1,4 @@
-#Popis uživatelského rozhraní pro vyhledávání URN:NBN
+#summary Popis uživatelského rozhraní pro vyhledávání URN:NBN
 
 = Uživatelské rozhraní =
 
