@@ -3,3 +3,10 @@
 = Uživatelské rozhraní =
 
 http://urnnbnresolver.googlecode.com/svn/wiki/SearchGUI.jpg
+
+  # Logo - návrat na úvodní stránku s nápovědou
+  # Hledaný text
+  # Spuštění vyhledávání (případně stiskem klávesy Enter po zadání hledaného textu)
+  # Přepínání jazyka
+  # Výsledky vyhledávání nebo nápověda
+  # Vstup do administrátorské aplikace (vyžaduje uživatelský účet, otevírá se v samostatném okně)
