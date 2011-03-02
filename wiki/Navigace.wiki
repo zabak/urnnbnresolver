@@ -4,6 +4,4 @@
 
 [Administrace Administrace]
 
-[Build Sestavení]
-
 [Instalace]
