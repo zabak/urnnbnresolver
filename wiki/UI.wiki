@@ -12,13 +12,15 @@ http://urnnbnresolver.googlecode.com/svn/wiki/SearchGUI.jpg
   # _Hledaný řetězec (identifikátor)_
   # _Spuštění vyhledávání_ (případně stiskem klávesy Enter po zadání hledaného textu)
   # _Přepínání jazykové mutace_ - český nebo anglický jazyk
-  # Výsledky vyhledávání nebo nápověda
-  # Vstup do administrátorské aplikace (vyžaduje uživatelský účet, otevírá se v samostatném okně)
+  # _Výsledky vyhledávání nebo nápověda_
+  # _Vstup do administrátorské aplikace_ - vyžaduje uživatelský účet, otevírá se v samostatném okně
 
 
 Aplikace umožňuje vyhledávat digitální dokumenty primárně podle identifikátoru URN:NBN, dále podle identifikátoru čČNB (číslo české národní bibliografie), čísel ISSN a ISBN.
 
-Aplikace vyhledává podle jakéhokoliv zadaného řetězce. Počet zobrazených nalezených dokumentů je omezen na 500. K přesnému vyhledání konkrétního dokumentu je nutné zadat identifikátor v jeho úplném znění podle příkladů níže uvedených..
+Aplikace vyhledává podle jakéhokoliv zadaného řetězce. Počet zobrazených nalezených dokumentů je omezen na 500. K přesnému vyhledání konkrétního dokumentu je nutné zadat identifikátor v jeho úplném znění podle příkladů níže uvedených.
+
+
 
   URN:NBN (např.: urn:nbn:cz:aba000:00003p)
 
@@ -28,5 +30,5 @@ Aplikace vyhledává podle jakéhokoliv zadaného řetězce. Počet zobrazených
 
   ISSN (např.: 1803-4217)
 
-Resolver je zprostředkující služba, která nezajišťuje zpřístupňování dokumentů.
-Resolver pouze poskytuje uživateli URL odkazy na dokumenty v digitálních knihovnách, které jsou odpovědné za jejich zpřístupňování.
+
+Resolver je zprostředkující služba, která nezajišťuje zpřístupňování dokumentů. Poskytuje uživateli pouze URL odkazy na dokumenty v digitálních knihovnách, které jsou odpovědné za jejich zpřístupňování.
