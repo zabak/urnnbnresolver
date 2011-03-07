@@ -3,4 +3,4 @@ URN:NBN resolver je aplikace, která umožňuje přidělování, evidenci, sprá
 Resolver udržuje informace přidružené k těmto identifikátorům, zejména základní bibliografické a technické údaje. Resolver je určen pouze pro identifikátory URN:NBN přidělené v českém prostředí (tedy začínající prefixem urn:nbn:cz).
 Autoritou pro přidělování identifikátorů s prefixem URN:NBN:CZ je Národní knihovna ČR, která tyto identifikátory přiřazuje prostřednictvím tohoto resolveru.
 
-Pilotní aplikace vznikla v roce 2010 v rámci Výzkumného záměru [http://www.isvav.cz/researchPlanDetail.do?rowId=MK00002322102 MK00002322102]
+Pilotní aplikace vznikla v roce 2010 v rámci Výzkumného záměru [http://www.isvav.cz/researchPlanDetail.do?rowId=MK00002322102 MK00002322102].
