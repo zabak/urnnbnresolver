@@ -21,7 +21,7 @@ http://urnnbnresolver.googlecode.com/svn/wiki/AdminGUIForm.jpg
   # _Listování a operace se záznamy_ - obdobná funkcionalita jako v zobrazení tabulky
   # _Zrušení/Uložení editace_ - levá z dvojice ikonek ukončí editaci a přejde do zobrazení tabulky, pravá ikonka uloží provedené změny ve formuláři
   # _Aktivace záznamu_ - zaškrtnutím políčka je daný záznam aktivován a zahrnut do výsledků vyhledávání
-  # _Přiřadit URNNBN_ - stejná funkcionalita, jako u dávkové funkce `Přiřadit URNNBN`, ale pouze pro aktuální záznam
+  # _PriraditUrnnbn_ - stejná funkcionalita, jako u dávkové funkce `PriraditURNNBN`, ale pouze pro aktuální záznam
   # _Přidat opakování_ - kliknutím na ikonku + je přidán jeden záznam do "vnořené tabulky" v rámci daného formuláře
   # _Odebrat opakování_ - kliknutím na křížek je daný záznam z vnořené tabulky odebrán
   # _Výběr hodnoty z číselníku_ - zapsáním úvodních písmen z hledaného textu a výběrem položky z "našeptávacího" menu vyberete do této části formuláře odkazovanou položku z příslušného číselníku. Alternativně nemusíte zadávat hledaný text, ale kliknutím na ikonku lupy zobrazíte celou tabulku číselníku v modálním okně, kde můžete potřebný záznam vybrat a případně ho tam i do číselníku přidat. 
