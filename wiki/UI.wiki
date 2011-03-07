@@ -9,14 +9,14 @@ K vyhledávání v registru resolveru slouží stránka s následujícími ovlá
 http://urnnbnresolver.googlecode.com/svn/wiki/SearchGUI.jpg
 
   # _Logo_ - návrat na úvodní stránku s nápovědou
-  # _Hledaný text_
+  # _Hledaný řetězec (identifikátor)_
   # _Spuštění vyhledávání_ (případně stiskem klávesy Enter po zadání hledaného textu)
-  # _Přepínání jazyka_ - čeština nebo angličtina
+  # _Přepínání jazykové mutace_ - český nebo anglický jazyk
   # Výsledky vyhledávání nebo nápověda
   # Vstup do administrátorské aplikace (vyžaduje uživatelský účet, otevírá se v samostatném okně)
 
 
-Aplikace umožňuje vyhledávat digitální dokumenty primárně podle identifikátoru URN:NBN, dále podle identifikátoru čČNB (číslo české národní bibliografie) a čísel ISSN a ISBN.
+Aplikace umožňuje vyhledávat digitální dokumenty primárně podle identifikátoru URN:NBN, dále podle identifikátoru čČNB (číslo české národní bibliografie), čísel ISSN a ISBN.
 
 Aplikace vyhledává podle jakéhokoliv zadaného řetězce. Počet zobrazených nalezených dokumentů je omezen na 500. K přesnému vyhledání konkrétního dokumentu je nutné zadat identifikátor v jeho úplném znění podle příkladů níže uvedených..
 
