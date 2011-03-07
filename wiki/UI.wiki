@@ -1,5 +1,7 @@
 #summary Popis uživatelského rozhraní pro vyhledávání URN:NBN
 
+
+
 = Uživatelské rozhraní =
 
 K vyhledávání v registru resolveru slouží stránka s následujícími ovládacími prvky:
