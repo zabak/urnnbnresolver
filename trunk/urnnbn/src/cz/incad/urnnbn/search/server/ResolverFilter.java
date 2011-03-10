@@ -36,14 +36,8 @@ public class ResolverFilter implements Filter {
        if (filterConfig == null)
           return;
        String path = ((HttpServletRequest)request).getServletPath();
-       /*System.out.println("REQUEST:"+path);
-       System.out.println("REQUEST CLASS:"+request.getClass());
-       long start = System.currentTimeMillis();
-       Locale locale = ((HttpServletRequest)request).getLocale();
-       System.out.println("LOCALE:"+locale+", time:"+(System.currentTimeMillis()-start));*/
        if (path != null && path.toUpperCase().startsWith("/URN:NBN:CZ")){
            String library = ((HttpServletRequest)request).getParameter("library");
-           //System.out.println("LIBRARY:"+library);
            if (library == null){
                ((HttpServletResponse)response).sendRedirect("Main.jsp#"+path.substring(1));
                //filterConfig.getServletContext().getRequestDispatcher("Main.jsp#"+path.substring(1)).forward(request, response);

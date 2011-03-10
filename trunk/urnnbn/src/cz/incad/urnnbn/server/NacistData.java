@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -24,6 +26,8 @@ import org.aplikator.server.persistence.Persister;
 import org.aplikator.server.persistence.PersisterFactory;
 
 public class NacistData implements Executable {
+    
+    private static final Logger LOG = Logger.getLogger(NacistData.class.getName());
     
     private Persister persister;
     private Structure s;
@@ -63,21 +67,17 @@ public class NacistData implements Executable {
             loadLibrariesMap();
             addNewLibraries(RDCZconn);
             
-            //System.out.println("Searching new records in RDCZ");
-            long start = System.currentTimeMillis();
             Statement RDCZst = RDCZconn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet RDCZrs = RDCZst.executeQuery(RDCZPredlohaSelect);
-            //System.out.println("Search finished in: "+(System.currentTimeMillis()-start)+"ms");
             while(RDCZrs.next()){
                 counter++;
                 try{
-                    //System.out.print("Count"+(counter)+":");
                     importRow(RDCZrs);
                     RDCZrs.updateInt("urnnbnflag", 2);
                     RDCZrs.updateRow();
                     RDCZconn.commit();
                 }catch(Exception exx){
-                    System.out.println(exx); 
+                    LOG.log(Level.SEVERE,"Error retrieving data from RD.CZ:",exx); 
                 }
             }
             return new FunctionResult("IMPORTOVANO: "+counter, true);
@@ -104,7 +104,6 @@ public class NacistData implements Executable {
     }
     
     private void importRow (ResultSet RDCZrs) throws SQLException{
-        //System.out.println("IDCISLO:"+RDCZrs.getString("idcislo")+", NAZEV:"+RDCZrs.getString("nazev"));
         DBRecord ie = new DBRecord();
         ie.create(s.intelektualniEntita.getTable(), conn);
         
@@ -227,27 +226,17 @@ public class NacistData implements Executable {
     private void loadInstitutionsMap(){
         institutions = new HashMap<String, Integer>();
         DBCommand cmd = s.db.createCommand();
-        // Select required columns
         DBColumnExpr[] columns = new DBColumnExpr[]{s.instituce.getPrimaryKey().column, s.instituce.SIGLA.column};   
         cmd.select(columns);
-        // Query Records and print output
         DBReader reader = new DBReader();
-        try
-        {
-            // Open Reader
-            //System.out.println("Running Query:");
-            //System.out.println(cmd.getSelect());
-            if (reader.open(cmd, conn) == false)
+        try {
+            if (! reader.open(cmd, conn)){
                 throw new RuntimeException(reader.getErrorMessage());
-            while (reader.moveNext())
-            {
-                institutions.put(reader.getString(s.instituce.SIGLA.column), reader.getInt(s.instituce.getPrimaryKey().column));
-                
             }
-
-        } finally
-        {
-            // always close Reader
+            while (reader.moveNext()) {
+                institutions.put(reader.getString(s.instituce.SIGLA.column), reader.getInt(s.instituce.getPrimaryKey().column));
+            }
+        } finally {
             reader.close();
         }
     }
@@ -285,27 +274,17 @@ public class NacistData implements Executable {
     private void loadLibrariesMap(){
         libraries = new HashMap<String, Integer>();
         DBCommand cmd = s.db.createCommand();
-        // Select required columns
         DBColumnExpr[] columns = new DBColumnExpr[]{s.digitalniKnihovna.getPrimaryKey().column, s.digitalniKnihovna.KODRDCZ.column};   
         cmd.select(columns);
-        // Query Records and print output
         DBReader reader = new DBReader();
-        try
-        {
-            // Open Reader
-            //System.out.println("Running Query:");
-            //System.out.println(cmd.getSelect());
-            if (reader.open(cmd, conn) == false)
+        try {
+            if (!reader.open(cmd, conn)){
                 throw new RuntimeException(reader.getErrorMessage());
-            while (reader.moveNext())
-            {
-                libraries.put(reader.getString(s.digitalniKnihovna.KODRDCZ.column), reader.getInt(s.digitalniKnihovna.getPrimaryKey().column));
-                
             }
-
-        } finally
-        {
-            // always close Reader
+            while (reader.moveNext()) {
+                libraries.put(reader.getString(s.digitalniKnihovna.KODRDCZ.column), reader.getInt(s.digitalniKnihovna.getPrimaryKey().column));
+            }
+        } finally {
             reader.close();
         }
     }
@@ -321,7 +300,6 @@ public class NacistData implements Executable {
             } catch (NamingException e) {
                 throw new IllegalStateException("Error getting RDCZ datasource from JNDI.", e);
             }
-           
         }
         Connection conn = RDCZdataSource.getConnection();
         conn.setAutoCommit(false);

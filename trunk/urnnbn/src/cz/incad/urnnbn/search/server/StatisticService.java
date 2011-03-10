@@ -4,11 +4,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.aplikator.server.persistence.Persister;
 import org.aplikator.server.persistence.PersisterFactory;
 
 public class StatisticService {
+    
+    private static final Logger LOG = Logger.getLogger(StatisticService.class.getName());
     
     Persister persister = PersisterFactory.getPersister();
     
@@ -33,7 +37,7 @@ public class StatisticService {
                 return retval;
             }
         }catch(Exception ex){
-            System.out.println("Stats error: "+ex);
+            LOG.log(Level.SEVERE, "Stats error: ", ex);
         }finally{
             if (conn!= null){
                 try{
