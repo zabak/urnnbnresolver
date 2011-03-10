@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.aplikator.server.Context;
 import org.aplikator.server.persistence.Persister;
@@ -21,6 +23,8 @@ import cz.incad.urnnbn.search.client.rpc.Search;
 import cz.incad.urnnbn.search.client.rpc.SearchResponse;
 
 public class SearchHandler implements CommandHandler<Search, SearchResponse> {
+    
+    private static final Logger LOG = Logger.getLogger(SearchHandler.class.getName());
     
     private static SearchHandler inst = new SearchHandler();
     
@@ -104,7 +108,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
                     return new SearchResponse(result);
                 }
             }catch(Exception ex){
-                System.out.println("Search error: "+ex);
+                LOG.log(Level.SEVERE,"Search error: ",ex);
             }finally{
                 if (conn!= null){
                     try{
@@ -185,7 +189,7 @@ public class SearchHandler implements CommandHandler<Search, SearchResponse> {
                 return findURL(library, rs.getInt("dr_id"),conn);
             }
         }catch(Exception ex){
-            System.out.println("Search error: "+ex);
+            LOG.log(Level.SEVERE,"Search error: ",ex);
         }finally{
             if (conn!= null){
                 try{

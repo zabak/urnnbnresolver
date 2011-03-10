@@ -1,5 +1,8 @@
 package cz.incad.urnnbn.server;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 
 import org.aplikator.client.command.ExecuteFunction;
@@ -15,7 +18,6 @@ import org.aplikator.server.descriptor.DateField;
 import org.aplikator.server.descriptor.Form;
 import org.aplikator.server.descriptor.Function;
 import org.aplikator.server.descriptor.HorizontalPanel;
-import org.aplikator.server.descriptor.QueryGenerator;
 import org.aplikator.server.descriptor.RefButton;
 import org.aplikator.server.descriptor.RepeatedForm;
 import org.aplikator.server.descriptor.TextArea;
@@ -24,6 +26,9 @@ import org.aplikator.server.descriptor.VerticalPanel;
 
 @SuppressWarnings("serial")
 public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
+    
+    private static final Logger LOG = Logger.getLogger(UrnnbnLoaderServlet.class.getName());
+    
     Structure struct;
      
     Arrangement digitalniKnihovnaArr;
@@ -38,11 +43,11 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
     @Override
     public void init() throws ServletException {
         try {
-            System.out.println("ApplicationLoader started");
+            LOG.fine("URNNBNLoader started");
             //SERVER SIDE
-            System.out.println("ApplicationLoader 1");
+            LOG.fine("URNNBNLoader 1");
             struct = (Structure)Application.get();
-            System.out.println("ApplicationLoader 2");
+            LOG.fine("URNNBNLoader 2");
             
             
             nacistData = new Function("NacistData", new NacistData());
@@ -75,7 +80,7 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             
             
             
-            System.out.println("ApplicationLoader 3");
+            LOG.fine("URNNBNLoader 3");
             //CLIENT SIDE MENU
             ApplicationDTO applicationDescriptor = ApplicationDTO.get();
             ServiceDTO places = new ServiceDTO("Tabulky");
@@ -88,10 +93,10 @@ public class UrnnbnLoaderServlet extends ApplicationLoaderServlet {
             functions.addAction(new ActionDTO("PriraditURNNBN", new ExecuteFunction(  functions, priraditUrnnbn.getFunctionDTO(null)) ));//TODO null context
             applicationDescriptor.addService(places);
             applicationDescriptor.addService(functions);
-            System.out.println("ApplicationLoader finished");
+            LOG.info("URNNBN Loader finished");
         } catch (Exception ex) {
-            System.out.println("ApplicationLoader error:" + ex);
-            throw new ServletException("ApplicationLoader error: ", ex);
+            LOG.log(Level.SEVERE,"URNNBN Loader error:", ex);
+            throw new ServletException("URNNBN Loader error: ", ex);
         }
     }
     

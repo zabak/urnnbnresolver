@@ -11,7 +11,8 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
-<inherits name='org.aplikator.Aplikator'/>
+  <inherits name='org.aplikator.Aplikator'/>
+  
   <!-- Specify the app entry point class.                         -->
   <entry-point class='org.aplikator.client.Aplikator'/>
 

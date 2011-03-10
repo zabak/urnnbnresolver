@@ -177,8 +177,6 @@ public class Main implements EntryPoint {
         
         
         iframe = new Frame("../urnnbnhelp"+("en".equals(localeInfo.getLocaleName())?"/en":""));
-        //iframe = new Frame(GWT.getModuleBaseURL().replace("search","urnnbnhelp"));
-        //System.out.println("BASE:"+GWT.getModuleBaseURL().replace("urnnbn", "").replace("search","urnnbnhelp"));
         iframe.setSize("100%", "100%");
        
         
