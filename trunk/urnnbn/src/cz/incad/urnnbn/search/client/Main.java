@@ -1,6 +1,7 @@
 package cz.incad.urnnbn.search.client;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 import org.aplikator.client.descriptor.ActionDTO;
 import org.aplikator.client.impl.MainMenuTreeViewModel.Category;
@@ -125,6 +126,7 @@ public class Main implements EntryPoint {
 
     public void onModuleLoad() {
         localeInfo = LocaleInfo.getCurrentLocale();
+        //Logger.getLogger("MAIN").severe("MODULE:"+GWT.getModuleBaseURL());
         RootLayoutPanel rootPanel = RootLayoutPanel.get();
         mainPanel = new DockLayoutPanel(Unit.PX);
         headerPanel = new HorizontalPanel();
