@@ -214,7 +214,7 @@ public class NacistData implements Executable {
         dr.create(s.instituce.getTable(), conn);
         dr.setValue(s.instituce.SIGLA.column, SIGLA);
         dr.setValue(s.instituce.NAZEV.column, nazev);
-        dr.setValue(s.instituce.PREFIX.column, "URN:NBN:CZ:"+SIGLA+":");
+        dr.setValue(s.instituce.PREFIX.column, "URN:NBN:CZ:"+SIGLA+"-");
         dr.update(conn);
         conn.commit();
         Integer id = dr.getInt(s.instituce.getPrimaryKey().column);
