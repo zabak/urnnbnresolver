@@ -1,7 +1,6 @@
 package cz.incad.urnnbn.search.client;
 
 import com.google.gwt.i18n.client.Constants;
-import com.google.gwt.i18n.client.Constants.DefaultStringValue;
 
 public interface ResolverConstants extends Constants{
     @DefaultStringValue("Registr identifikátorů digitálních dokumentů")

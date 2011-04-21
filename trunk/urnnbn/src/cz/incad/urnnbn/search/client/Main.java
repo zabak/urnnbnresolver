@@ -1,10 +1,5 @@
 package cz.incad.urnnbn.search.client;
 
-import java.util.Arrays;
-import java.util.logging.Logger;
-
-import org.aplikator.client.descriptor.ActionDTO;
-import org.aplikator.client.impl.MainMenuTreeViewModel.Category;
 import org.aplikator.client.rpc.Callback;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -24,7 +19,6 @@ import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.cellview.client.TreeNode;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
@@ -35,12 +29,10 @@ import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
@@ -304,6 +296,7 @@ public class Main implements EntryPoint {
     }
     
     
+    @SuppressWarnings("unused")
     private Widget createHelpWidget(){
         VerticalPanel help = new VerticalPanel();
         Widget helpHeader = new HTML( "Upozornění - Resolver URN:NBN je v současnosti v pilotním provozu na datech uložených v NK ČR.<br>"

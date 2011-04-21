@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.aplikator.client.rpc.Command;
 import org.aplikator.client.rpc.Response;
 import org.aplikator.server.impl.ContextImpl;
-import org.aplikator.server.persistence.Persister;
-import org.aplikator.server.persistence.PersisterFactory;
 import org.aplikator.server.rpc.CommandHandler;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
