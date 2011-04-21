@@ -1,9 +1,7 @@
 package cz.incad.urnnbn.server;
 
-import org.aplikator.client.data.ListItem;
 import org.aplikator.client.descriptor.PropertyType;
 import org.aplikator.server.descriptor.Application;
-import org.aplikator.server.descriptor.Blob;
 import org.aplikator.server.descriptor.Collection;
 import org.aplikator.server.descriptor.Entity;
 import org.aplikator.server.descriptor.Property;

@@ -36,7 +36,9 @@ public class NacistData implements Executable {
         +"rozsah, rozliseni, barevnahloubka, dostupnost, isbn, issn, ccnb, druhdokumentu, nazev, autor, vydavatel, rokvyd, mistovyd, url , publprac, publdate, financovano, cislozakazky "
         +" from Predloha where urnnbnflag = 1 "; 
     
+    @SuppressWarnings("unused")
     private String RDCZDigObjSelect = "select id, handler from digobj do left outer join xpreddigobj xdo on do.id = xdo.rDigObjekt where xdo.rPredloha= ?";//TODO pouzit pro dalsi Lokace
+    @SuppressWarnings("unused")
     private String RDCZInitUpdate = "update Predloha set urnnbnflag = 1 where urnnbnflag is null and financovano in ('norskeFondy','iop','VISK7', 'povodne')"; 
     private String RDCZInstSelect = "select value, cz from dlists where classname = 'cz.incad.nkp.digital.InsVlastnik'";
     private String RDCZKnihSelect = "select value, cz from dlists where classname = 'cz.incad.nkp.digital.InsDigitalniKnihovna'";

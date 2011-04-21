@@ -1,7 +1,6 @@
 package cz.incad.urnnbn.search.server;
 
 import java.io.IOException;
-import java.util.Locale;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

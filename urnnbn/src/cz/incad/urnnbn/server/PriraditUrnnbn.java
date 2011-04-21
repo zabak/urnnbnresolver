@@ -84,7 +84,7 @@ public class PriraditUrnnbn implements Executable {
                     RDCZst.setString(1, URNNBN);
                     String cisloRDCZ = record.getString(s.digitalniReprezentace.CISLO_RDCZ.column);
                     RDCZst.setString(2,cisloRDCZ);
-                    int result = RDCZst.executeUpdate();
+                    RDCZst.executeUpdate();
                     RDCZconn.commit();
                     counter++;
                 }
