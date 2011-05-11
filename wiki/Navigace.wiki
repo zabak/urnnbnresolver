@@ -8,4 +8,4 @@
 
 [UpravaDatoveStruktury Datová struktura]
 
-[URL pro dotazy]
+[DatovaStruktura Datová struktura]
