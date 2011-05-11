@@ -8,4 +8,4 @@
 
 [UpravaDatoveStruktury Datová struktura]
 
-[DatovaStruktura Datová struktura]
+[URLodkazySyntax]
