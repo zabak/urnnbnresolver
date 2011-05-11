@@ -10,3 +10,5 @@ by vracel primo prvni URL napr.
 
 nemecky resolver
 http://www.nbn-resolving.org/?siteLang=us
+
+melo by fungovat i http://resolver.nkp.cz/urn:nbn:cz:aba000-0001qc
