@@ -1,6 +1,7 @@
 http://resolver.nkp.cz/urnnbn/urn:nbn:cz:aba001-0001qc
 vypise metadata 
-to same http://resolver.nkp.cz/redirect/urn:nbn:cz:aba001-0001qc (udelal dolezal)
+
+to same dela http://resolver.nkp.cz/redirect/urn:nbn:cz:aba001-0001qc (udelal dolezal)
 
 http://resolver.nkp.cz/urnnbn/urn:nbn:cz:aba001-0001qc?library=nkp.cz
 vraci primo zdroj z digitalni knihovny identifikovana v parametru library
